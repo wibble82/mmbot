@@ -1,0 +1,12 @@
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\Channel9Demo\bin\Release\Channel9Demo.exe
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\Channel9Demo\bin\Release\3DTools.dll
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\Channel9Demo\obj\Release\ResolveAssemblyReference.cache
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\Channel9Demo\obj\Release\DemoWindow.baml
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\Channel9Demo\obj\Release\DemoWindow.g.cs
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\Channel9Demo\obj\Release\App.g.cs
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\Channel9Demo\obj\Release\Channel9Demo_MarkupCompile.cache
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\Channel9Demo\obj\Release\Channel9Demo.g.resources
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\Channel9Demo\obj\Release\Channel9Demo.Properties.Resources.resources
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\Channel9Demo\obj\Release\ResGen.read.1.tlog
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\Channel9Demo\obj\Release\ResGen.write.1.tlog
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\Channel9Demo\obj\Release\Channel9Demo.exe

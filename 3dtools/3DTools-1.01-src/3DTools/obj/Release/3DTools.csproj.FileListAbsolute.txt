@@ -1,0 +1,10 @@
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\3DTools\bin\Release\3DTools.dll
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\3DTools\obj\Release\ResolveAssemblyReference.cache
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\3DTools\obj\Release\Trackport3D.baml
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\3DTools\obj\Release\Trackport3D.g.cs
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\3DTools\obj\Release\3DTools_MarkupCompile.cache
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\3DTools\obj\Release\3DTools.g.resources
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\3DTools\obj\Release\_3DTools.Properties.Resources.resources
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\3DTools\obj\Release\ResGen.read.1.tlog
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\3DTools\obj\Release\ResGen.write.1.tlog
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\3DTools\obj\Release\3DTools.dll

@@ -11,6 +11,7 @@ namespace convexcad
         public class CSGScene
         {
             public Node Root = null;
+            public static SafeScreenSpaceLines3D DebugLines = null;
 
             public Node Rectangle(double x, double y)
             {

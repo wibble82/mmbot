@@ -12,6 +12,7 @@ namespace convexcad
     {
         public class Node
         {
+            public CSGScene Scene = null;
             public Node Parent = null;
             public List<Node> Children = new List<Node>();
             //public Matrix3D Transform = Matrix3D.Identity;
@@ -22,6 +23,7 @@ namespace convexcad
             {
                 foreach (Node n in Children)
                     n.Run();
+
                 Create();
             }
 
@@ -72,9 +74,8 @@ namespace convexcad
                 return trimesh;
             }
 
-            public ScreenSpaceLines3D GetWireFrame()
+            public void GetWireFrame(SafeScreenSpaceLines3D line)
             {
-                ScreenSpaceLines3D line = new ScreenSpaceLines3D();
                 foreach (Convex c in Convexes)
                 {
                     foreach (Face f in c.Faces)
@@ -91,7 +92,6 @@ namespace convexcad
                         line.Color = Colors.Black;
                     }
                 }
-                return line;
             }
         }
 
@@ -169,10 +169,52 @@ namespace convexcad
 
             public override void Create()
             {
-                foreach (Node n in Children)
+                if (Is3d)
                 {
-                    Convexes.AddRange(n.Convexes.Select(a => a.Copy()));
+
                 }
+                else
+                {
+                    foreach (Node n in Children)
+                        foreach (Convex c in n.Convexes)
+                            for (int i = 0; i < c.Edges.Count; i++)
+                                CSGScene.DebugLines.AddLine(c.GetEdgeVertPos(i, 0), c.GetEdgeVertPos(i, 1));
+
+                    //copy all convexes from first node
+                    Convexes.AddRange(Children[0].Convexes.Select(a => a.Copy()));
+
+                    //now progressively union extra nodes in
+                    for (int i = 1; i < Children.Count; i++)
+                    {
+                        //go through each current convex
+                        //and each convex in current child
+                        foreach (Convex otherconvex in Children[i].Convexes)
+                        {
+                            //start with the other child's convex (this will be a list of none overlapping convexes)
+                            List<Convex> newlist = new List<Convex>();
+                            newlist.Add(otherconvex);
+
+                            //now iterate over all the current convexes (note: we know these do not overlap)
+                            for (int cidx = 0; cidx < Convexes.Count; cidx++)
+                            {
+                                //
+                                List<Convex> otherconvexsplit = new List<Convex>();
+                                foreach (Convex newcvx in newlist)
+                                {
+                                    Convex overlap = null;
+                                    Convex.CalculateClippedConvexes2d(newcvx, Convexes[cidx], otherconvexsplit, ref overlap);                                    
+                                }
+                                newlist = otherconvexsplit;
+                                 
+                            }
+                            Convexes.AddRange(newlist);
+                        }
+                    }
+                }
+//                 foreach (Node n in Children)
+//                 {
+//                     Convexes.AddRange(n.Convexes.Select(a => a.Copy()));
+//                 }
             }
         }
 

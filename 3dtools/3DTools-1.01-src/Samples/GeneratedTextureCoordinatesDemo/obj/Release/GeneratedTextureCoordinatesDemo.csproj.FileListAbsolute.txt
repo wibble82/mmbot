@@ -1,0 +1,12 @@
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\GeneratedTextureCoordinatesDemo\bin\Release\GeneratedTextureCoordinatesDemo.exe
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\GeneratedTextureCoordinatesDemo\bin\Release\3DTools.dll
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\GeneratedTextureCoordinatesDemo\obj\Release\ResolveAssemblyReference.cache
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\GeneratedTextureCoordinatesDemo\obj\Release\Window1.baml
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\GeneratedTextureCoordinatesDemo\obj\Release\Window1.g.cs
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\GeneratedTextureCoordinatesDemo\obj\Release\App.g.cs
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\GeneratedTextureCoordinatesDemo\obj\Release\GeneratedTextureCoordinatesDemo_MarkupCompile.cache
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\GeneratedTextureCoordinatesDemo\obj\Release\GeneratedTextureCoordinatesDemo.g.resources
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\GeneratedTextureCoordinatesDemo\obj\Release\GeneratedTextureCoordinatesDemo.Properties.Resources.resources
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\GeneratedTextureCoordinatesDemo\obj\Release\ResGen.read.1.tlog
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\GeneratedTextureCoordinatesDemo\obj\Release\ResGen.write.1.tlog
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\GeneratedTextureCoordinatesDemo\obj\Release\GeneratedTextureCoordinatesDemo.exe

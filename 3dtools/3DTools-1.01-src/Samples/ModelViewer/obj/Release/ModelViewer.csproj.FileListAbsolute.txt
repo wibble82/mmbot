@@ -1,0 +1,15 @@
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\ModelViewer\bin\Release\Sample Models\Tiger.xaml
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\ModelViewer\bin\Release\Sample Models\Tiger.bmp
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\ModelViewer\bin\Release\ModelViewer.exe
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\ModelViewer\bin\Release\3DTools.dll
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\ModelViewer\obj\Release\ResolveAssemblyReference.cache
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\ModelViewer\obj\Release\MainWindow.baml
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\ModelViewer\obj\Release\MainWindow.g.cs
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\ModelViewer\obj\Release\MyApp.g.cs
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\ModelViewer\obj\Release\ModelViewer_Content.g.cs
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\ModelViewer\obj\Release\ModelViewer_MarkupCompile.cache
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\ModelViewer\obj\Release\ModelViewer.g.resources
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\ModelViewer\obj\Release\ModelViewer.Properties.Resources.resources
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\ModelViewer\obj\Release\ResGen.read.1.tlog
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\ModelViewer\obj\Release\ResGen.write.1.tlog
+C:\Users\chris\mmbot\3dtools\3DTools-1.01-src\Samples\ModelViewer\obj\Release\ModelViewer.exe

@@ -23,40 +23,57 @@ namespace convexcad
     {
         public MainWindow()
         {
-            InitializeComponent();
-
-
+            InitializeComponent();            
         }
 
         private void simpleButtonClick(object sender, RoutedEventArgs e)
         {
-            /*MeshGeometry3D triangleMesh = new MeshGeometry3D();
-            Point3D point0 = new Point3D(0, 0, 0);
-            Point3D point1 = new Point3D(5, 0, 0);
-            Point3D point2 = new Point3D(0, 0, 5);
-            triangleMesh.Positions.Add(point0);
-            triangleMesh.Positions.Add(point1);
-            triangleMesh.Positions.Add(point2);
-            triangleMesh.TriangleIndices.Add(0);
-            triangleMesh.TriangleIndices.Add(2);
-            triangleMesh.TriangleIndices.Add(1);
-            Vector3D normal = new Vector3D(0, 1, 0);
-            triangleMesh.Normals.Add(normal);
-            triangleMesh.Normals.Add(normal);
-            triangleMesh.Normals.Add(normal);*/
+            //create new buffers for lines
+            SafeScreenSpaceLines3D blacklines = new SafeScreenSpaceLines3D();
+            SafeScreenSpaceLines3D redlines = new SafeScreenSpaceLines3D();
+            blacklines.Color = Colors.Black;
+            redlines.Color = Colors.Red;
+            redlines.Thickness = 4;
 
+            //create the main scene
             MyScene s = new MyScene();
+            Geometry.CSGScene.DebugLines = redlines;
             s.Create();
-            MeshGeometry3D triangleMesh = s.Root.GetGeometry();
 
+            //get and add geometry
+            MeshGeometry3D triangleMesh = s.Root.GetGeometry();
+            Color c = Colors.Blue;
+            c.A = 100;
             Material material = new DiffuseMaterial(
-                new SolidColorBrush(Colors.DarkKhaki));
+                new SolidColorBrush(c));
+
             GeometryModel3D triangleModel = new GeometryModel3D(
                 triangleMesh, material);
             ModelVisual3D model = new ModelVisual3D();
             model.Content = triangleModel;
             this.mainViewport.Children.Add(model);
-            this.mainViewport.Children.Add(s.Root.GetWireFrame());
+
+            //get and add wireframe
+            s.Root.GetWireFrame(blacklines);
+
+            /*Point3D line0a = new Point3D(-2, 0, 0);
+            Point3D line0b = new Point3D(5, 0, 0);
+            Point3D line1a = new Point3D(0, -5, 0);
+            Point3D line1b = new Point3D(1, -1, 0);
+
+            blacklines.AddLine(line0a, line0b);
+            blacklines.AddLine(line1a, line1b);
+
+            Point3D hitpoint = new Point3D();
+            double hitu = 0;
+            double hitv = 0;
+            if (Math.IntersectLineLine2d(ref hitpoint, ref hitu, ref hitv, line0a, line0b, line1a, line1b))
+            {
+                redlines.AddCross(hitpoint, 1);
+            }*/
+
+            mainViewport.Children.Add(redlines);
+            mainViewport.Children.Add(blacklines);
         }
     }
 
@@ -67,9 +84,10 @@ namespace convexcad
             Root = 
             Union(
                 Rectangle(4, 3),
-                Translate(2, 0, 2,
-                    Rectangle(4, 3)
-                )
+                Translate(2, 2, 0,Rectangle(4, 3)),
+                Translate(-1, 3, 0,Rectangle(5, 6)),
+                Translate(2, 1, 0,Rectangle(7, 1)),
+                Translate(3, 1, 0,Rectangle(1, 7))
             );
             Root.Run();
         }
