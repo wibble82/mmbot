@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\Users\mmchrisc\mmbot\convexcad\convexcad\obj\x86\Debug\
+C:\Users\mmchrisc\mmbot\convexcad\convexcad\obj\x86\Release\
 convexcad
 none
 false
-DEBUG;TRACE
+TRACE
 C:\Users\mmchrisc\mmbot\convexcad\convexcad\App.xaml
 11151548125
 

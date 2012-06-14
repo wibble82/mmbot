@@ -21,6 +21,9 @@ namespace convexcad
     /// </summary>
     public partial class MainWindow : Window
     {
+        SafeScreenSpaceLines3D blacklines = new SafeScreenSpaceLines3D();
+        SafeScreenSpaceLines3D redlines = new SafeScreenSpaceLines3D();
+
         public MainWindow()
         {
             InitializeComponent();            
@@ -28,9 +31,11 @@ namespace convexcad
 
         private void simpleButtonClick(object sender, RoutedEventArgs e)
         {
+            this.mainViewport.Children.Clear();
+            blacklines.Points.Clear();
+            redlines.Points.Clear();
+
             //create new buffers for lines
-            SafeScreenSpaceLines3D blacklines = new SafeScreenSpaceLines3D();
-            SafeScreenSpaceLines3D redlines = new SafeScreenSpaceLines3D();
             blacklines.Color = Colors.Black;
             redlines.Color = Colors.Red;
             redlines.Thickness = 4;
@@ -38,10 +43,12 @@ namespace convexcad
             //create the main scene
             MyScene s = new MyScene();
             Geometry.CSGScene.DebugLines = redlines;
+            Geometry.CSGScene.TargetStage++;
+            Geometry.CSGScene.Stages.Clear();
             s.Create();
 
             //get and add geometry
-            MeshGeometry3D triangleMesh = s.Root.GetGeometry();
+            MeshGeometry3D triangleMesh = Geometry.CSGScene.LastNode.GetGeometry();
             Color c = Colors.Blue;
             c.A = 100;
             Material material = new DiffuseMaterial(
@@ -54,7 +61,7 @@ namespace convexcad
             this.mainViewport.Children.Add(model);
 
             //get and add wireframe
-            s.Root.GetWireFrame(blacklines);
+            Geometry.CSGScene.LastNode.GetWireFrame(blacklines);
 
             /*Point3D line0a = new Point3D(-2, 0, 0);
             Point3D line0b = new Point3D(5, 0, 0);

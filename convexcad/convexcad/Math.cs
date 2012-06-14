@@ -70,7 +70,7 @@ namespace convexcad
 
             if (IntersectRayRay2d(ref hitpoint, ref hitu, ref hitv, line0a, line0dir, line1a, line1dir))
             {
-                if (hitu >= 0d && hitu <= 1d && hitv >= 0d && hitv <= 1d)
+                if (hitu > 0d && hitu < 1d && hitv > 0d && hitv < 1d)
                 {
                     return true;
                 }

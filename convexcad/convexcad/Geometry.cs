@@ -11,24 +11,29 @@ namespace convexcad
     {
         public class Vertex
         {
+            public Convex Convex = null;
             public Point3D Pos = new Point3D();
             public List<int> VertIndices = new List<int>();
             public List<int> EdgeIndices = new List<int>();
 
-            public Vertex(double x, double y)
+            public Vertex(Convex c, double x, double y)
             {
+                Convex = c;
                 Pos = new Point3D(x, y, 0);
             }
-            public Vertex(double x, double y, double z)
+            public Vertex(Convex c, double x, double y, double z)
             {
+                Convex = c;
                 Pos = new Point3D(x, y, z);
             }
-            public Vertex(Point3D pos)
+            public Vertex(Convex c, Point3D pos)
             {
+                Convex = c;
                 Pos = pos;
             }
-            public Vertex(Vertex v)
+            public Vertex(Convex c, Vertex v)
             {
+                Convex = c;
                 Pos = v.Pos;
                 VertIndices = new List<int>(v.VertIndices);
                 EdgeIndices = new List<int>(v.EdgeIndices);
@@ -36,31 +41,37 @@ namespace convexcad
         }
         public class Edge
         {
+            public Convex Convex = null;
             public int[] VertIndices = new int[2];
             public int[] FaceIndices = new int[2];
 
-            public Edge(int a, int b)
+            public Edge(Convex c, int a, int b)
             {
+                Convex = c;
                 VertIndices[0] = a;
                 VertIndices[1] = b;
             }
-            public Edge(Edge e)
+            public Edge(Convex c, Edge e)
             {
-                e.VertIndices.CopyTo(VertIndices,0);
+                Convex = c;
+                e.VertIndices.CopyTo(VertIndices, 0);
                 e.FaceIndices.CopyTo(FaceIndices,0);
             }
         }
         public class Face
         {
+            public Convex Convex = null;
             public int[] VertIndices = null;
             public int[] EdgeIndices = null;
 
-            public Face(params int[] verts)
+            public Face(Convex c, params int[] verts)
             {
+                Convex = c;
                 VertIndices = verts;
             }
-            public Face(Face e)
+            public Face(Convex c, Face e)
             {
+                Convex = c;
                 VertIndices = e.VertIndices.ToArray();
                 EdgeIndices = e.EdgeIndices.ToArray();
             }
@@ -75,12 +86,23 @@ namespace convexcad
 
             public Point3D GetVertPos(int idx) { return Vertices[idx].Pos; }
 
-            public Vertex GetEdgeVert(int edge, int idx) { return Vertices[Edges[edge].VertIndices[idx]]; }
-            public Point3D GetEdgeVertPos(int edge, int idx) { return GetEdgeVert(edge, idx).Pos; }
+            public Vertex GetEdgeVert(Edge e, int idx) { return Vertices[e.VertIndices[idx]]; }
+            public Point3D GetEdgeVertPos(Edge e, int idx) { return GetEdgeVert(e, idx).Pos; }
+            public Vertex GetEdgeVert(int edge, int idx) { return GetEdgeVert(Edges[edge],idx); }
+            public Point3D GetEdgeVertPos(int edge, int idx) { return GetEdgeVertPos(Edges[edge], idx); }
 
-            public int GetFaceVertCount(int face) { return Faces[face].VertIndices.Length; }
-            public Vertex GetFaceVert(int face, int idx) { return Vertices[Faces[face].VertIndices[idx]]; }
-            public Point3D GetFaceVertPos(int face, int idx) { return GetFaceVert(face, idx).Pos; }
+            public int GetFaceVertCount(Face f) { return f.VertIndices.Length; }
+            public Vertex GetFaceVert(Face f, int idx) { return Vertices[f.VertIndices[idx]]; }
+            public Point3D GetFaceVertPos(Face f, int idx) { return GetFaceVert(f, idx).Pos; }
+            public int GetFaceVertCount(int face) { return GetFaceVertCount(Faces[face]); }
+            public Vertex GetFaceVert(int face, int idx) { return GetFaceVert(Faces[face],idx); }
+            public Point3D GetFaceVertPos(int face, int idx) { return GetFaceVertPos(Faces[face],idx); }
+
+            public Vector3D GetEdgeDir(Edge e) { Vector3D v = GetEdgeVertPos(e, 1) - GetEdgeVertPos(e, 0); v.Normalize(); return v; }
+            public Vector3D GetEdgeNormal2d(Edge e) { Vector3D v = GetEdgeDir(e);  return new Vector3D(-v.Y,v.X,0); }
+            public Vector3D GetEdgeDir(int e) { return GetEdgeDir(Edges[e]); }
+            public Vector3D GetEdgeNormal2d(int e) { return GetEdgeNormal2d(Edges[e]); }
+
 
             public Point3D GetCentre()
             {
@@ -116,7 +138,7 @@ namespace convexcad
                         int v0 = f.VertIndices[i];
                         int v1 = f.VertIndices[(i + 1) % vcnt];
 
-                        Edge e = new Edge(v0, v1);
+                        Edge e = new Edge(this,v0, v1);
 
                         f.EdgeIndices[i] = Edges.Count;
 
@@ -128,9 +150,9 @@ namespace convexcad
             public Convex Copy()
             {
                 Convex cvx = new Convex();
-                foreach (Vertex v in Vertices) cvx.Vertices.Add(new Vertex(v));
-                foreach (Edge v in Edges) cvx.Edges.Add(new Edge(v));
-                foreach (Face v in Faces) cvx.Faces.Add(new Face(v));
+                foreach (Vertex v in Vertices) cvx.Vertices.Add(new Vertex(cvx,v));
+                foreach (Edge v in Edges) cvx.Edges.Add(new Edge(cvx,v));
+                foreach (Face v in Faces) cvx.Faces.Add(new Face(cvx,v));
                 return cvx;
             }
 
@@ -140,9 +162,16 @@ namespace convexcad
                 return this;
             }
 
-            public bool RayIntersect2d(Point3D raystart, Vector3D raydir, ref Point3D hitpos0, ref int hitedge0, ref Point3D hitpos1, ref int hitedge1 )
+            public void DebugDraw()
+            {
+                for (int i = 0; i < Edges.Count; i++)
+                    CSGScene.DebugLines.AddLine(GetEdgeVertPos(i, 0), GetEdgeVertPos(i, 1));
+            }
+
+            public bool RayIntersect2d(Point3D raystart, Vector3D raydir, ref Point3D hitpos0, ref int hitedge0, ref double t0, ref Point3D hitpos1, ref int hitedge1, ref double t1 )
             {
                 hitedge0 = hitedge1 = -1;
+                t0 = t1 = 0;
                 int edgeidx = 0;
                 double u,v;
                 u = v = 0;
@@ -153,6 +182,7 @@ namespace convexcad
                     if(Math.IntersectRayLine2d(ref hitpos0,ref u, ref v, raystart, raydir, p0, p1))
                     {
                         hitedge0 = edgeidx;
+                        t0 = u;
                         break;
                     }
                 }
@@ -164,6 +194,7 @@ namespace convexcad
                     if (Math.IntersectRayLine2d(ref hitpos1, ref u, ref v, raystart, raydir, p0, p1))
                     {
                         hitedge1 = edgeidx;
+                        t1 = u;
                         break;
                     }
                 }
@@ -177,8 +208,8 @@ namespace convexcad
                 newcvxa = new Convex();
                 newcvxb = new Convex();
 
-                Face facea = new Face();
-                Face faceb = new Face();
+                Face facea = new Face(newcvxa);
+                Face faceb = new Face(newcvxb);
                 newcvxa.Faces.Add(facea);
                 newcvxb.Faces.Add(faceb);
 
@@ -188,21 +219,21 @@ namespace convexcad
                 List<int> usedindicesb = new List<int>();
 
 
-                newcvxa.Vertices.Add(new Vertex(point0));
+                newcvxa.Vertices.Add(new Vertex(newcvxa,point0));
                 for (int i = edge0; i != edge1; i = (i + 1) % edgecount)
                 {
                     usedindicesa.Add(convex.Edges[i].VertIndices[1]);
-                    newcvxa.Vertices.Add(new Vertex(convex.GetEdgeVert(i, 1)));
+                    newcvxa.Vertices.Add(new Vertex(newcvxa,convex.GetEdgeVert(i, 1)));
                 }
-                newcvxa.Vertices.Add(new Vertex(point1));
+                newcvxa.Vertices.Add(new Vertex(newcvxa,point1));
 
-                newcvxb.Vertices.Add(new Vertex(point1));
+                newcvxb.Vertices.Add(new Vertex(newcvxb,point1));
                 for (int i = edge1; i != edge0; i = (i + 1) % edgecount)
                 {
                     usedindicesb.Add(convex.Edges[i].VertIndices[1]);
-                    newcvxb.Vertices.Add(new Vertex(convex.GetEdgeVert(i, 1)));
+                    newcvxb.Vertices.Add(new Vertex(newcvxb,convex.GetEdgeVert(i, 1)));
                 }
-                newcvxb.Vertices.Add(new Vertex(point0));
+                newcvxb.Vertices.Add(new Vertex(newcvxb,point0));
 
                 facea.VertIndices = new int[newcvxa.Vertices.Count];
                 faceb.VertIndices = new int[newcvxb.Vertices.Count];
@@ -216,17 +247,69 @@ namespace convexcad
                 newcvxb.BuildFromVertsAndFaces();
             }
 
+            public int CheckPlaneOverlap2d(Vector3D plane_dir, double plane_d)
+            {
+                int num_inside = 0;
+                int num_outside = 0;
+                foreach (Vertex v in Vertices)
+                {
+                    //if(Vector3D.DotProduct(new Vector3D(v.Pos.X,v.Pos.Y,v.Pos.Z),plane_dir))
+                }
+
+                return 0;
+            }
+
+            public static bool DoConvexesOverlap2d(Convex a, Convex b)
+            {
+                foreach (Edge e in b.Edges)
+                {
+                    Vector3D norm = b.GetEdgeNormal2d(e);
+                    Vector3D edgeoffset = (Vector3D)b.GetEdgeVertPos(e, 0);
+                    double mind = 999999999;
+                    foreach (Vertex v in a.Vertices)
+                    {
+                        Vector3D vertoffset = (Vector3D)v.Pos;
+                        double d = Vector3D.DotProduct(vertoffset, norm) - Vector3D.DotProduct(edgeoffset, norm);
+                        mind = d < mind ? d : mind;
+                    }
+                    if (mind >= 0)
+                        return false;
+                }
+                foreach (Edge e in a.Edges)
+                {
+                    Vector3D norm = a.GetEdgeNormal2d(e);
+                    Vector3D edgeoffset = (Vector3D)a.GetEdgeVertPos(e, 0);
+                    double mind = 999999999;
+                    foreach (Vertex v in b.Vertices)
+                    {
+                        Vector3D vertoffset = (Vector3D)v.Pos;
+                        double d = Vector3D.DotProduct(vertoffset, norm) - Vector3D.DotProduct(edgeoffset, norm);
+                        mind = d < mind ? d : mind;
+                    }
+                    if (mind >= 0)
+                        return false;
+                }
+                return true;
+            }
+
             public static bool CalculateClippedConvexes2d(Convex a, Convex b, List<Convex> a_only, ref Convex overlap)
             {
-
+                if (!DoConvexesOverlap2d(a, b))
+                {
+                    a_only.Add(a);
+                    overlap = null;
+                    return false;
+                }
 
                 overlap = a.Copy();
 
                 Point3D hp0, hp1;
                 int hedge0, hedge1;
+                double ht0, ht1;
                 hp0 = new Point3D();
                 hp1 = new Point3D();
                 hedge0 = hedge1 = -1;
+                ht0 = ht1 = 0;
 
                 bool any_split = false;
                 foreach (Edge bedge in b.Edges)
@@ -234,7 +317,7 @@ namespace convexcad
                     Point3D raystart = b.Vertices[bedge.VertIndices[0]].Pos;
                     Vector3D raydir = b.Vertices[bedge.VertIndices[1]].Pos - raystart;
                     
-                    if (overlap.RayIntersect2d(raystart, raydir, ref hp0, ref hedge0, ref hp1, ref hedge1))
+                    if (overlap.RayIntersect2d(raystart, raydir, ref hp0, ref hedge0, ref ht0, ref hp1, ref hedge1, ref ht1))
                     {
                         //CSGScene.DebugLines.AddCross(hp0, 1);
                         //CSGScene.DebugLines.AddCross(hp1, 1);

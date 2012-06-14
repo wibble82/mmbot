@@ -24,7 +24,11 @@ namespace convexcad
                 foreach (Node n in Children)
                     n.Run();
 
-                Create();
+                if (CSGScene.NextStage("NodeCreate"))
+                {
+                    Create();
+                    CSGScene.LastNode = this;
+                }
             }
 
             public virtual void Create() { }
@@ -124,12 +128,12 @@ namespace convexcad
                 Convex cvx = new Convex();
                 cvx.Is3d = false;
 
-                cvx.Vertices.Add(new Vertex(-Size.X * 0.5, -Size.Y * 0.5));
-                cvx.Vertices.Add(new Vertex(-Size.X * 0.5,  Size.Y * 0.5));
-                cvx.Vertices.Add(new Vertex( Size.X * 0.5,  Size.Y * 0.5));
-                cvx.Vertices.Add(new Vertex( Size.X * 0.5, -Size.Y * 0.5));
+                cvx.Vertices.Add(new Vertex(cvx,-Size.X * 0.5, -Size.Y * 0.5));
+                cvx.Vertices.Add(new Vertex(cvx,-Size.X * 0.5,  Size.Y * 0.5));
+                cvx.Vertices.Add(new Vertex(cvx, Size.X * 0.5,  Size.Y * 0.5));
+                cvx.Vertices.Add(new Vertex(cvx, Size.X * 0.5, -Size.Y * 0.5));
 
-                cvx.Faces.Add(new Face(0, 1, 2, 3));
+                cvx.Faces.Add(new Face(cvx,0, 1, 2, 3));
 
                 cvx.BuildFromVertsAndFaces();
 
@@ -175,13 +179,54 @@ namespace convexcad
                 }
                 else
                 {
+                    //for now gonna do this the stoopidest way possible! put all polygons in a list, and
+                    //assume they might all potentially overlap, then keep spinning over them until no 
+                    //more splits occur
+                    Convexes = new List<Convex>();
                     foreach (Node n in Children)
-                        foreach (Convex c in n.Convexes)
-                            for (int i = 0; i < c.Edges.Count; i++)
-                                CSGScene.DebugLines.AddLine(c.GetEdgeVertPos(i, 0), c.GetEdgeVertPos(i, 1));
+                        Convexes.AddRange(n.Convexes.Select(a => a.Copy()));
 
-                    //copy all convexes from first node
+                    if (!CSGScene.NextStage("Begin union"))
+                    {
+                        foreach (Convex c in Convexes)
+                            c.DebugDraw();
+                        return;
+                    }
+
+                    bool done_split = true;
+                    while (done_split)
+                    {
+                        done_split = false;
+                        for (int i = 0; i < Convexes.Count; i++)
+                        {
+                            for (int j = i+1; j < Convexes.Count; j++)
+                            {
+                                List<Convex> otherconvexsplit = new List<Convex>();
+                                Convex overlap = null;
+                                Convex acvx = Convexes[i];
+                                Convex bcvx = Convexes[j];
+                                if (Convex.CalculateClippedConvexes2d(acvx, bcvx, otherconvexsplit, ref overlap))
+                                {
+                                    Convexes.RemoveAt(i);
+                                    Convexes.AddRange(otherconvexsplit);
+                                    done_split = true;
+                                    if (!CSGScene.NextStage("Done a split"))
+                                    {
+                                        acvx.DebugDraw();
+                                        return;
+                                    }
+                                    break;
+                                }                                
+                            }
+                            if (done_split)
+                                break;
+                        }
+                    }
+
+                    /*//copy all convexes from first node
                     Convexes.AddRange(Children[0].Convexes.Select(a => a.Copy()));
+                    if (!CSGScene.NextStage("Added base convexes"))
+                        return;
 
                     //now progressively union extra nodes in
                     for (int i = 1; i < Children.Count; i++)
@@ -202,14 +247,31 @@ namespace convexcad
                                 foreach (Convex newcvx in newlist)
                                 {
                                     Convex overlap = null;
-                                    Convex.CalculateClippedConvexes2d(newcvx, Convexes[cidx], otherconvexsplit, ref overlap);                                    
+                                    if (Convex.CalculateClippedConvexes2d(newcvx, Convexes[cidx], otherconvexsplit, ref overlap))
+                                    {
+                                        if (!CSGScene.NextStage("Single split"))
+                                        {
+                                            Convexes.AddRange(otherconvexsplit);
+                                            return;
+                                        }
+                                    }                                
                                 }
                                 newlist = otherconvexsplit;
+
+                                if (!CSGScene.NextStage("Full split"))
+                                {
+                                    Convexes.AddRange(newlist);
+                                    return;
+                                }
+
                                  
                             }
                             Convexes.AddRange(newlist);
+
+                            if (!CSGScene.NextStage("Added next convexes"))
+                                return;
                         }
-                    }
+                    }*/
                 }
 //                 foreach (Node n in Children)
 //                 {

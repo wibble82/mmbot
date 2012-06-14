@@ -12,6 +12,22 @@ namespace convexcad
         {
             public Node Root = null;
             public static SafeScreenSpaceLines3D DebugLines = null;
+            public static int TargetStage = -1;
+            public static List<string> Stages = new List<string>();
+            public static Node LastNode = null;
+
+            public static bool NextStage(string stage_name)
+            {
+                if (TargetStage==-1 || Stages.Count <= TargetStage)
+                {
+                    Stages.Add(stage_name);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
 
             public Node Rectangle(double x, double y)
             {
