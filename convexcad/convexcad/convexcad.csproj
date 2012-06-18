@@ -60,6 +60,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Math.cs" />
+    <Compile Include="SceneRunner.cs" />
+    <None Include="Scenes\TestScene.cs" />
     <Compile Include="ScreenSpaceLines3D.cs" />
     <Compile Include="View.cs" />
     <Page Include="MainWindow.xaml">

@@ -1,0 +1,9 @@
+C:\Users\chris\mmbot\convexcad\tests\bin\Debug\tests.dll
+C:\Users\chris\mmbot\convexcad\tests\bin\Debug\tests.pdb
+C:\Users\chris\mmbot\convexcad\tests\bin\Debug\3DTools.dll
+C:\Users\chris\mmbot\convexcad\tests\bin\Debug\convexcad.exe
+C:\Users\chris\mmbot\convexcad\tests\bin\Debug\convexcad.pdb
+C:\Users\chris\mmbot\convexcad\tests\bin\Debug\3DTools.pdb
+C:\Users\chris\mmbot\convexcad\tests\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\chris\mmbot\convexcad\tests\obj\Debug\tests.dll
+C:\Users\chris\mmbot\convexcad\tests\obj\Debug\tests.pdb

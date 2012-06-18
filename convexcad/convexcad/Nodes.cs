@@ -10,6 +10,7 @@ namespace convexcad
 {
     namespace Geometry
     {
+        [Serializable]
         public class Node
         {
             public CSGScene Scene = null;
@@ -54,13 +55,15 @@ namespace convexcad
                 MeshGeometry3D trimesh = new MeshGeometry3D();
 
                 int first_vert = 0;
+                Vector3D tinyoffset = new Vector3D(0, 0, 0);
                 foreach (Convex c in Convexes)
                 {
                     foreach (Vertex v in c.Vertices)
                     {
-                        trimesh.Positions.Add(v.Pos);
+                        trimesh.Positions.Add(v.Pos+tinyoffset);
                         trimesh.Normals.Add(new Vector3D(0, 1, 0));
                     }
+                    tinyoffset.Z -= 0.0001;
                     foreach (Face f in c.Faces)
                     {
                         int vcnt = f.VertIndices.Length;
@@ -76,6 +79,136 @@ namespace convexcad
                 }
 
                 return trimesh;
+            }
+
+            class VertexPosComparer : IEqualityComparer<Vertex>
+            {
+                public bool Equals(Vertex a, Vertex b)
+                {
+                    return a.Pos == b.Pos;
+                }
+                public int GetHashCode(Vertex a)
+                {
+                    return a.Pos.GetHashCode();
+                }
+            }
+            class EdgeIdxComparer : IEqualityComparer<Edge>
+            {
+                public bool Equals(Edge a, Edge b)
+                {
+                    return a.VertIndices[0] == b.VertIndices[0] && a.VertIndices[1] == b.VertIndices[1];
+                }
+                public int GetHashCode(Edge e)
+                {
+                    return e.VertIndices[0].GetHashCode() ^ e.VertIndices[1].GetHashCode();
+                }
+            }
+
+            /// <summary>
+            /// Removes t junctions or overlapping edges by building a list of unique vertices and then
+            /// detecting which vertices lie on each edge
+            /// </summary>
+            public void JoinEdges2d()
+            {
+                Point3D[] vertices = Convexes.SelectMany(a => a.Vertices).Distinct(new VertexPosComparer()).Select(a=>a.Pos).ToArray();
+                foreach (Convex c in Convexes)
+                {
+                    List<Point3D> allnewverts = new List<Point3D>();
+                    Face f = new Face(c);
+                    foreach (Edge e in c.Edges)
+                    {
+                        Point3D p0 = c.GetEdgeVertPos(e, 0);
+                        Point3D p1 = c.GetEdgeVertPos(e, 1);
+                        Vector3D dir = p1 - p0; dir.Normalize();
+                        Vector3D orth = new Vector3D(-dir.Y, dir.X, 0);
+                        double t0 = Vector3D.DotProduct((Vector3D)p0, dir);
+                        double t1 = Vector3D.DotProduct((Vector3D)p1, dir);
+                        double s = Vector3D.DotProduct((Vector3D)p0, orth);
+                        //allnewverts.Add(p0);
+                        List<Point3D> edgenewverts = new List<Point3D>();
+                        foreach (Point3D v in vertices)
+                        {
+                            double vs = Vector3D.DotProduct((Vector3D)v,orth);
+                            if (vs == s)
+                            {
+                                double vt = Vector3D.DotProduct((Vector3D)v, dir);
+                                if (vt >= t0 && vt < t1)
+                                {
+                                    edgenewverts.Add(v);
+                                }
+                            }
+                        }
+                        allnewverts.AddRange(edgenewverts.OrderBy(a => Vector3D.DotProduct((Vector3D)a, dir)));
+                    }
+
+                    c.Vertices = allnewverts.Select(a => new Vertex(c, a)).ToList();
+
+                    f.VertIndices = new int[c.Vertices.Count];
+                    for (int i = 0; i < f.VertIndices.Length; i++ )
+                        f.VertIndices[i] = i;
+
+                    c.Faces = new List<Face>();
+                    c.Faces.Add(f);
+
+                    c.BuildFromVertsAndFaces();
+                }
+            }
+
+            //System.Windows.Point
+            public void GetWeldedGeometry(out Vertex[] vertices, out Edge[] edges)
+            {
+                JoinEdges2d();
+
+                Point3D[] points = Convexes.SelectMany(a => a.Vertices).Select(a => a.Pos).ToArray();
+                int[] hashes = Convexes.SelectMany(a => a.Vertices).Select(a => a.GetHashCode()).ToArray();
+
+                vertices = Convexes.SelectMany(a => a.Vertices).Distinct(new VertexPosComparer()).ToArray();
+
+                Dictionary<Point3D, int> vert_idx_dict = new Dictionary<Point3D, int>();
+                for (int i = 0; i < vertices.Length; i++)
+                {
+                    vert_idx_dict.Add(vertices[i].Pos, i);
+                    //CSGScene.DebugLines.AddCross(vertices[i].Pos,0.25);
+                }
+
+
+                Dictionary<Edge, int> edge_dict = new Dictionary<Edge, int>(new EdgeIdxComparer());
+
+                foreach (Convex c in Convexes)
+                {
+                    foreach (Edge e in c.Edges)
+                    {
+                        int idxa = vert_idx_dict[c.GetEdgeVertPos(e,0)];
+                        int idxb = vert_idx_dict[c.GetEdgeVertPos(e,1)];
+                        Edge newedge0 = new Edge(null, idxa, idxb);
+                        Edge newedge1 = new Edge(null, idxb, idxa);
+                        if (edge_dict.ContainsKey(newedge0))
+                            edge_dict[newedge0]++;
+                        else if (edge_dict.ContainsKey(newedge1))
+                            edge_dict[newedge1]++;
+                        else
+                        {
+                            //CSGScene.DebugLines.AddLine(c.GetEdgeVertPos(e, 0), c.GetEdgeVertPos(e, 1));
+                            edge_dict.Add(newedge0, 1);
+                        }
+                    }
+                }
+
+                Edge[] unique_edges = edge_dict.Where(a => a.Value == 1).Select(a => a.Key).ToArray();
+
+                for (int i = 0; i < unique_edges.Length; i++)
+                {
+                    Point3D p0 = vertices[unique_edges[i].VertIndices[0]].Pos;
+                    Point3D p1 = vertices[unique_edges[i].VertIndices[1]].Pos;
+                    CSGScene.DebugLines.AddLine(p0,p0+(p1-p0)*1);
+                }
+
+                edges = unique_edges;
+
+                foreach (Edge e in edges)
+                {
+                }
+
             }
 
             public void GetWireFrame(SafeScreenSpaceLines3D line)
@@ -99,6 +232,7 @@ namespace convexcad
             }
         }
 
+        [Serializable]
         public class BoxNode : Node
         {
             Vector3D Size = new Vector3D();
@@ -114,6 +248,7 @@ namespace convexcad
             }
         }
 
+        [Serializable]
         public class RectangleNode : Node
         {
             Vector3D Size = new Vector3D();
@@ -141,6 +276,7 @@ namespace convexcad
             }
         }
 
+        [Serializable]
         public class TranslateNode : Node
         {
             Vector3D Translation;
@@ -164,6 +300,7 @@ namespace convexcad
             }
         }
 
+        [Serializable]
         public class UnionNode : Node
         {
             public UnionNode(params Node[] nodes)
@@ -179,13 +316,21 @@ namespace convexcad
                 }
                 else
                 {
-                    //for now gonna do this the stoopidest way possible! put all polygons in a list, and
-                    //assume they might all potentially overlap, then keep spinning over them until no 
-                    //more splits occur
+                    //this'll be the clever algorithm. it takes advantage of the fact that we always maintain:
+                    //- for any given node, none of it's child convexes overlap
+                    //therefore:
+                    //- no node should test it's own convexes against each other
+            
+
+
+
+                    //this is the simplest algorithm - we assume every convex could potentially overlap every other convex
+                    //and keep iterating until no more splits occur. it works, but involves a lot of unnecessary overlap tests
                     Convexes = new List<Convex>();
                     foreach (Node n in Children)
                         Convexes.AddRange(n.Convexes.Select(a => a.Copy()));
 
+                    //draw all initial convexes if this is the current stage
                     if (!CSGScene.NextStage("Begin union"))
                     {
                         foreach (Convex c in Convexes)
@@ -193,23 +338,34 @@ namespace convexcad
                         return;
                     }
 
+                    //now do the iterative splitting
+                    //loop until no splits done
                     bool done_split = true;
                     while (done_split)
                     {
+                        //spin over every convex
                         done_split = false;
                         for (int i = 0; i < Convexes.Count; i++)
                         {
+                            //go over every other convex
                             for (int j = i+1; j < Convexes.Count; j++)
                             {
-                                List<Convex> otherconvexsplit = new List<Convex>();
-                                Convex overlap = null;
+                                //get the 2 convexes to compare
                                 Convex acvx = Convexes[i];
                                 Convex bcvx = Convexes[j];
+
+                                //do a clip test
+                                List<Convex> otherconvexsplit = new List<Convex>();
+                                Convex overlap = null;
                                 if (Convex.CalculateClippedConvexes2d(acvx, bcvx, otherconvexsplit, ref overlap))
                                 {
+                                    //got a split, so remove the convex that was split (cvx a), and re-add the sections
+                                    //that didn't overlap
                                     Convexes.RemoveAt(i);
                                     Convexes.AddRange(otherconvexsplit);
                                     done_split = true;
+
+                                    //if last stage, draw the convex we were splitting and then bail
                                     if (!CSGScene.NextStage("Done a split"))
                                     {
                                         acvx.DebugDraw();
@@ -218,68 +374,17 @@ namespace convexcad
                                     break;
                                 }                                
                             }
+
+                            //break out (so we iterate round again) if a split happened
                             if (done_split)
                                 break;
                         }
                     }
-
-                    /*//copy all convexes from first node
-                    Convexes.AddRange(Children[0].Convexes.Select(a => a.Copy()));
-                    if (!CSGScene.NextStage("Added base convexes"))
-                        return;
-
-                    //now progressively union extra nodes in
-                    for (int i = 1; i < Children.Count; i++)
-                    {
-                        //go through each current convex
-                        //and each convex in current child
-                        foreach (Convex otherconvex in Children[i].Convexes)
-                        {
-                            //start with the other child's convex (this will be a list of none overlapping convexes)
-                            List<Convex> newlist = new List<Convex>();
-                            newlist.Add(otherconvex);
-
-                            //now iterate over all the current convexes (note: we know these do not overlap)
-                            for (int cidx = 0; cidx < Convexes.Count; cidx++)
-                            {
-                                //
-                                List<Convex> otherconvexsplit = new List<Convex>();
-                                foreach (Convex newcvx in newlist)
-                                {
-                                    Convex overlap = null;
-                                    if (Convex.CalculateClippedConvexes2d(newcvx, Convexes[cidx], otherconvexsplit, ref overlap))
-                                    {
-                                        if (!CSGScene.NextStage("Single split"))
-                                        {
-                                            Convexes.AddRange(otherconvexsplit);
-                                            return;
-                                        }
-                                    }                                
-                                }
-                                newlist = otherconvexsplit;
-
-                                if (!CSGScene.NextStage("Full split"))
-                                {
-                                    Convexes.AddRange(newlist);
-                                    return;
-                                }
-
-                                 
-                            }
-                            Convexes.AddRange(newlist);
-
-                            if (!CSGScene.NextStage("Added next convexes"))
-                                return;
-                        }
-                    }*/
                 }
-//                 foreach (Node n in Children)
-//                 {
-//                     Convexes.AddRange(n.Convexes.Select(a => a.Copy()));
-//                 }
             }
         }
 
+        [Serializable]
         public class DifferenceNode : Node
         {
 
@@ -297,6 +402,7 @@ namespace convexcad
             }
         }
 
+        [Serializable]
         public class IntersectNode : Node
         {
 

@@ -30,7 +30,7 @@
                 </StackPanel>
             </StackPanel>
             <tools3d:TrackballDecorator>
-                <Viewport3D  Name="mainViewport" ClipToBounds="True">
+                <Viewport3D  Name="mainViewport" ClipToBounds="True" MouseDown="mainViewport_MouseDown">
                     <Viewport3D.Camera>
                         <PerspectiveCamera 
 	                      FarPlaneDistance="100"

@@ -160,7 +160,7 @@ namespace convexcad
         private void GeometryDirty()
         {
             // Force next call to UpdateTransforms() to return true.
-            _visualToScreen = MathUtils.ZeroMatrix;
+            _visualToScreen = _3DTools.MathUtils.ZeroMatrix;
         }
 
         private void RebuildGeometry()
@@ -258,7 +258,7 @@ namespace convexcad
             Viewport3DVisual viewport;
             bool success;
 
-            Matrix3D visualToScreen = MathUtils.TryTransformTo2DAncestor(this, out viewport, out success);
+            Matrix3D visualToScreen = _3DTools.MathUtils.TryTransformTo2DAncestor(this, out viewport, out success);
 
             if (!success || !visualToScreen.HasInverse)
             {

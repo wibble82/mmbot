@@ -6,7 +6,7 @@ using System.Windows.Media.Media3D;
 
 namespace convexcad
 {
-    static class Math
+    static class MathUtils
     {
         public static bool IntersectRayRay2d(ref Point3D hitpoint, ref double hitu, ref double hitv, Point3D ray0start, Vector3D ray0dir, Point3D ray1start, Vector3D ray1dir)
         {

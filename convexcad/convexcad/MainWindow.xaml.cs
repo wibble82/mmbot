@@ -31,6 +31,10 @@ namespace convexcad
 
         private void simpleButtonClick(object sender, RoutedEventArgs e)
         {
+            SceneRunner runner = new SceneRunner();
+            //object res = runner.ExecuteCode("..\\..\\Scenes\\TestScene.cs", "convexcad", "TestScene", "Run", false);
+            object res = Geometry.CSGScene.Load("..\\..\\Scenes\\TestScene.cs.dat");
+
             this.mainViewport.Children.Clear();
             blacklines.Points.Clear();
             redlines.Points.Clear();
@@ -41,11 +45,14 @@ namespace convexcad
             redlines.Thickness = 4;
 
             //create the main scene
-            MyScene s = new MyScene();
+            Geometry.CSGScene s = (Geometry.CSGScene)res;
             Geometry.CSGScene.DebugLines = redlines;
-            Geometry.CSGScene.TargetStage++;
+            Geometry.CSGScene.TargetStage=1000;
             Geometry.CSGScene.Stages.Clear();
-            s.Create();
+            Geometry.CSGScene.LastNode = s.Root;
+            //s.Run();
+
+            //s.Save("..\\..\\Scenes\\TestScene.cs.dat");
 
             //get and add geometry
             MeshGeometry3D triangleMesh = Geometry.CSGScene.LastNode.GetGeometry();
@@ -61,7 +68,7 @@ namespace convexcad
             this.mainViewport.Children.Add(model);
 
             //get and add wireframe
-            Geometry.CSGScene.LastNode.GetWireFrame(blacklines);
+            //Geometry.CSGScene.LastNode.GetWireFrame(blacklines);
 
             /*Point3D line0a = new Point3D(-2, 0, 0);
             Point3D line0b = new Point3D(5, 0, 0);
@@ -81,22 +88,53 @@ namespace convexcad
 
             mainViewport.Children.Add(redlines);
             mainViewport.Children.Add(blacklines);
+
+            Geometry.Vertex[] welded_verts;
+            Geometry.Edge[] welded_edges;
+            Geometry.CSGScene.LastNode.GetWeldedGeometry(out welded_verts, out welded_edges);
+            System.Diagnostics.Debug.WriteLine("");
+        }
+
+        private void mainViewport_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Point mousePos = e.GetPosition(mainViewport);
+            PointHitTestParameters hitParams = new PointHitTestParameters(mousePos);
+            VisualTreeHelper.HitTest(mainViewport, null, HTResultCallback, hitParams);
+            
+        }
+
+        private HitTestResultBehavior HTResultCallback(HitTestResult result)
+        {
+            // Did we hit 3D?
+            RayHitTestResult rayResult = result as RayHitTestResult;
+            if (rayResult != null)
+            {
+                // Did we hit a MeshGeometry3D?
+                RayMeshGeometry3DHitTestResult rayMeshResult =
+                    rayResult as RayMeshGeometry3DHitTestResult;
+
+                if (rayMeshResult != null)
+                {
+                    // Yes we did!
+                }
+            }
+
+            return HitTestResultBehavior.Continue;
         }
     }
 
     public class MyScene : Geometry.CSGScene
     {
-        public void Create()
+        public override Geometry.Node Create()
         {
-            Root = 
+            return 
             Union(
                 Rectangle(4, 3),
                 Translate(2, 2, 0,Rectangle(4, 3)),
-                Translate(-1, 3, 0,Rectangle(5, 6)),
+                 Translate(-1, 3, 0,Rectangle(5, 6)),
                 Translate(2, 1, 0,Rectangle(7, 1)),
                 Translate(3, 1, 0,Rectangle(1, 7))
             );
-            Root.Run();
         }
     }
 

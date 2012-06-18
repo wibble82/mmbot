@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="4403d3cc-f0be-41ba-a847-a993bd8fbc24" name="chris@CHRISLAPTOP 2012-06-17 18:44:07" runUser="chrislaptop\chris" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="87b3b41a-f5ee-4a39-9ba7-a2667af6a788">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="chris_CHRISLAPTOP 2012-06-17 18_44_07">
+      <DeploymentItem filename="C:\Users\chris\mmbot\3dtools\3DTools-1.01-bin\3DTools.dll" />
+      <DeploymentItem filename="C:\Users\chris\mmbot\convexcad\convexcad\bin\Debug\convexcad.exe" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-06-17T18:44:07.4423047+01:00" queuing="2012-06-17T18:44:11.2575229+01:00" start="2012-06-17T18:44:11.8775583+01:00" finish="2012-06-17T18:44:13.1526313+01:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="7" executed="7" passed="1" error="0" failed="6" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TranslateTest" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="748f6cca-c403-559f-fb85-29aad836a015">
+      <Execution id="2ce9f0b0-34c3-4fc1-9fe5-47091cd66346" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TranslateTest" />
+    </UnitTest>
+    <UnitTest name="UnionTest" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="409a3228-194f-2f8e-aa7f-0c692d177ea1">
+      <Execution id="e80139e2-18c7-4c3f-ab4e-80621ddb8a39" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UnionTest" />
+    </UnitTest>
+    <UnitTest name="RectangleTest" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="fb71f77b-d140-c2ed-ce91-44bcea9f3a84">
+      <Execution id="5c42ce4b-9fda-4c52-87ef-8ded5e6f1f30" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RectangleTest" />
+    </UnitTest>
+    <UnitTest name="IntersectTest" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="1caa9bc7-98db-ca03-2d84-1330fa4ebeb4">
+      <Execution id="f08bec5b-35ca-42bc-a58b-ac3fd4853796" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="IntersectTest" />
+    </UnitTest>
+    <UnitTest name="DifferenceTest" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="c861eee5-7bf2-f7cd-fc1f-92253ac7560e">
+      <Execution id="d11b7bf8-8e61-414c-a0be-3823b50a1bd8" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="DifferenceTest" />
+    </UnitTest>
+    <UnitTest name="BoxTest" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="83b15dfc-75d0-45aa-83a9-f00aba22fb48">
+      <Execution id="66cfb839-ceae-44da-b2a6-efe54d676385" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="BoxTest" />
+    </UnitTest>
+    <UnitTest name="TestMethod1" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="f758f945-5c3e-39bf-3df9-493df64a1c17">
+      <Execution id="6d2db025-db5b-44c7-b631-e68311cde7e3" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.SceneTests, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestMethod1" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="1caa9bc7-98db-ca03-2d84-1330fa4ebeb4" executionId="f08bec5b-35ca-42bc-a58b-ac3fd4853796" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="409a3228-194f-2f8e-aa7f-0c692d177ea1" executionId="e80139e2-18c7-4c3f-ab4e-80621ddb8a39" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="748f6cca-c403-559f-fb85-29aad836a015" executionId="2ce9f0b0-34c3-4fc1-9fe5-47091cd66346" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="83b15dfc-75d0-45aa-83a9-f00aba22fb48" executionId="66cfb839-ceae-44da-b2a6-efe54d676385" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c861eee5-7bf2-f7cd-fc1f-92253ac7560e" executionId="d11b7bf8-8e61-414c-a0be-3823b50a1bd8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f758f945-5c3e-39bf-3df9-493df64a1c17" executionId="6d2db025-db5b-44c7-b631-e68311cde7e3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fb71f77b-d140-c2ed-ce91-44bcea9f3a84" executionId="5c42ce4b-9fda-4c52-87ef-8ded5e6f1f30" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="f08bec5b-35ca-42bc-a58b-ac3fd4853796" testId="1caa9bc7-98db-ca03-2d84-1330fa4ebeb4" testName="IntersectTest" computerName="CHRISLAPTOP" duration="00:00:00.2618633" startTime="2012-06-17T18:44:12.0035656+01:00" endTime="2012-06-17T18:44:12.9206180+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f08bec5b-35ca-42bc-a58b-ac3fd4853796">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method tests.CSGSceneTest.IntersectTest threw exception: 
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source</Message>
+          <StackTrace>    at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at convexcad.Geometry.Node.SetChildren(Node[] nodes) in C:\Users\chris\mmbot\convexcad\convexcad\Nodes.cs:line 38
+   at convexcad.Geometry.IntersectNode..ctor(Node[] nodes) in C:\Users\chris\mmbot\convexcad\convexcad\Nodes.cs:line 404
+   at convexcad.Geometry.CSGScene.Intersect(Node[] nodes) in C:\Users\chris\mmbot\convexcad\convexcad\CSGScene.cs:line 70
+   at tests.CSGSceneTest.IntersectTest() in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 108
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e80139e2-18c7-4c3f-ab4e-80621ddb8a39" testId="409a3228-194f-2f8e-aa7f-0c692d177ea1" testName="UnionTest" computerName="CHRISLAPTOP" duration="00:00:00.0092736" startTime="2012-06-17T18:44:12.9306186+01:00" endTime="2012-06-17T18:44:12.9656206+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e80139e2-18c7-4c3f-ab4e-80621ddb8a39">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method tests.CSGSceneTest.UnionTest threw exception: 
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source</Message>
+          <StackTrace>    at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at convexcad.Geometry.Node.SetChildren(Node[] nodes) in C:\Users\chris\mmbot\convexcad\convexcad\Nodes.cs:line 38
+   at convexcad.Geometry.UnionNode..ctor(Node[] nodes) in C:\Users\chris\mmbot\convexcad\convexcad\Nodes.cs:line 303
+   at convexcad.Geometry.CSGScene.Union(Node[] nodes) in C:\Users\chris\mmbot\convexcad\convexcad\CSGScene.cs:line 62
+   at tests.CSGSceneTest.UnionTest() in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 141
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2ce9f0b0-34c3-4fc1-9fe5-47091cd66346" testId="748f6cca-c403-559f-fb85-29aad836a015" testName="TranslateTest" computerName="CHRISLAPTOP" duration="00:00:00.0082465" startTime="2012-06-17T18:44:12.9696208+01:00" endTime="2012-06-17T18:44:12.9886219+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2ce9f0b0-34c3-4fc1-9fe5-47091cd66346">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method tests.CSGSceneTest.TranslateTest threw exception: 
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source</Message>
+          <StackTrace>    at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at convexcad.Geometry.Node.SetChildren(Node[] nodes) in C:\Users\chris\mmbot\convexcad\convexcad\Nodes.cs:line 38
+   at convexcad.Geometry.TranslateNode..ctor(Double x, Double y, Double z, Node[] nodes) in C:\Users\chris\mmbot\convexcad\convexcad\Nodes.cs:line 284
+   at convexcad.Geometry.CSGScene.Translate(Double x, Double y, Double z, Node[] nodes) in C:\Users\chris\mmbot\convexcad\convexcad\CSGScene.cs:line 57
+   at tests.CSGSceneTest.TranslateTest() in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 126
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="66cfb839-ceae-44da-b2a6-efe54d676385" testId="83b15dfc-75d0-45aa-83a9-f00aba22fb48" testName="BoxTest" computerName="CHRISLAPTOP" duration="00:00:00.0434426" startTime="2012-06-17T18:44:12.9926221+01:00" endTime="2012-06-17T18:44:13.0436250+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="66cfb839-ceae-44da-b2a6-efe54d676385">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;(null)&gt;. Actual:&lt;convexcad.Geometry.BoxNode&gt;. </Message>
+          <StackTrace>   at tests.CSGSceneTest.BoxTest() in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 159
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d11b7bf8-8e61-414c-a0be-3823b50a1bd8" testId="c861eee5-7bf2-f7cd-fc1f-92253ac7560e" testName="DifferenceTest" computerName="CHRISLAPTOP" duration="00:00:00.0021502" startTime="2012-06-17T18:44:13.0446251+01:00" endTime="2012-06-17T18:44:13.0546257+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d11b7bf8-8e61-414c-a0be-3823b50a1bd8">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method tests.CSGSceneTest.DifferenceTest threw exception: 
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source</Message>
+          <StackTrace>    at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at convexcad.Geometry.Node.SetChildren(Node[] nodes) in C:\Users\chris\mmbot\convexcad\convexcad\Nodes.cs:line 38
+   at convexcad.Geometry.DifferenceNode..ctor(Node[] nodes) in C:\Users\chris\mmbot\convexcad\convexcad\Nodes.cs:line 387
+   at convexcad.Geometry.CSGScene.Difference(Node[] nodes) in C:\Users\chris\mmbot\convexcad\convexcad\CSGScene.cs:line 66
+   at tests.CSGSceneTest.DifferenceTest() in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 93
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6d2db025-db5b-44c7-b631-e68311cde7e3" testId="f758f945-5c3e-39bf-3df9-493df64a1c17" testName="TestMethod1" computerName="CHRISLAPTOP" duration="00:00:00.0002598" startTime="2012-06-17T18:44:13.0566258+01:00" endTime="2012-06-17T18:44:13.0686265+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6d2db025-db5b-44c7-b631-e68311cde7e3">
+    </UnitTestResult>
+    <UnitTestResult executionId="5c42ce4b-9fda-4c52-87ef-8ded5e6f1f30" testId="fb71f77b-d140-c2ed-ce91-44bcea9f3a84" testName="RectangleTest" computerName="CHRISLAPTOP" duration="00:00:00.0017148" startTime="2012-06-17T18:44:13.0706266+01:00" endTime="2012-06-17T18:44:13.0796271+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5c42ce4b-9fda-4c52-87ef-8ded5e6f1f30">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;(null)&gt;. Actual:&lt;convexcad.Geometry.RectangleNode&gt;. </Message>
+          <StackTrace>   at tests.CSGSceneTest.RectangleTest() in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 79
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

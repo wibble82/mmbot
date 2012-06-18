@@ -9,6 +9,7 @@ namespace convexcad
 {
     namespace Geometry
     {
+        [Serializable]
         public class Vertex
         {
             public Convex Convex = null;
@@ -38,7 +39,14 @@ namespace convexcad
                 VertIndices = new List<int>(v.VertIndices);
                 EdgeIndices = new List<int>(v.EdgeIndices);
             }
+
+            public override string ToString()
+            {
+                return Pos.ToString();
+            }
+
         }
+        [Serializable]
         public class Edge
         {
             public Convex Convex = null;
@@ -57,7 +65,17 @@ namespace convexcad
                 e.VertIndices.CopyTo(VertIndices, 0);
                 e.FaceIndices.CopyTo(FaceIndices,0);
             }
+
+            public override string ToString()
+            {
+                if(Convex != null)
+                    return String.Format("[{0:d},{1:d}] Verts: [{2},{3}]", VertIndices[0], VertIndices[1],Convex.Vertices[VertIndices[0]],Convex.Vertices[VertIndices[1]]);
+                else
+                    return String.Format("[{0:d},{1:d}]",VertIndices[0],VertIndices[1]);
+            }
+
         }
+        [Serializable]
         public class Face
         {
             public Convex Convex = null;
@@ -77,6 +95,7 @@ namespace convexcad
             }
        }
 
+        [Serializable]
         public class Convex
         {
             public bool Is3d = false;
@@ -179,7 +198,7 @@ namespace convexcad
                 {
                     Point3D p0 = Vertices[Edges[edgeidx].VertIndices[0]].Pos;
                     Point3D p1 = Vertices[Edges[edgeidx].VertIndices[1]].Pos;
-                    if(Math.IntersectRayLine2d(ref hitpos0,ref u, ref v, raystart, raydir, p0, p1))
+                    if(MathUtils.IntersectRayLine2d(ref hitpos0,ref u, ref v, raystart, raydir, p0, p1))
                     {
                         hitedge0 = edgeidx;
                         t0 = u;
@@ -191,7 +210,7 @@ namespace convexcad
                 {
                     Point3D p0 = Vertices[Edges[edgeidx].VertIndices[0]].Pos;
                     Point3D p1 = Vertices[Edges[edgeidx].VertIndices[1]].Pos;
-                    if (Math.IntersectRayLine2d(ref hitpos1, ref u, ref v, raystart, raydir, p0, p1))
+                    if (MathUtils.IntersectRayLine2d(ref hitpos1, ref u, ref v, raystart, raydir, p0, p1))
                     {
                         hitedge1 = edgeidx;
                         t1 = u;
