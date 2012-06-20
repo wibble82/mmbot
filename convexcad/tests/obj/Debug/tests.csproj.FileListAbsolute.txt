@@ -7,3 +7,5 @@ C:\Users\chris\mmbot\convexcad\tests\bin\Debug\3DTools.pdb
 C:\Users\chris\mmbot\convexcad\tests\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\chris\mmbot\convexcad\tests\obj\Debug\tests.dll
 C:\Users\chris\mmbot\convexcad\tests\obj\Debug\tests.pdb
+C:\Users\chris\mmbot\convexcad\tests\bin\Debug\ICSharpCode.AvalonEdit.dll
+C:\Users\chris\mmbot\convexcad\tests\bin\Debug\ICSharpCode.AvalonEdit.xml

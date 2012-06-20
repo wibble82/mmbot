@@ -40,6 +40,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\3dtools\3DTools-1.01-bin\3DTools.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.AvalonEdit">
+      <HintPath>..\..\avalonedit\ICSharpCode.AvalonEdit.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -61,7 +64,10 @@
     </ApplicationDefinition>
     <Compile Include="Math.cs" />
     <Compile Include="SceneRunner.cs" />
+    <None Include="app.config" />
     <None Include="Scenes\TestScene.cs" />
+    <None Include="Scenes\rectangle.cs" />
+    <None Include="Scenes\union.cs" />
     <Compile Include="ScreenSpaceLines3D.cs" />
     <Compile Include="View.cs" />
     <Page Include="MainWindow.xaml">

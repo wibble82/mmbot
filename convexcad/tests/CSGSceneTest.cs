@@ -1,6 +1,8 @@
 ﻿using convexcad.Geometry;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.IO;
+using convexcad;
 
 namespace tests
 {
@@ -63,101 +65,140 @@ namespace tests
         //
         #endregion
 
+        [Serializable]
+        public class RectNodeTest : CSGScene
+        {
+            public override Node Create()
+            {
+                return Rectangle(1,1);
+            }
+        }
 
-        /// <summary>
-        ///A test for Rectangle
-        ///</summary>
+        void CompareGeometry(CSGSceneTestFIle tst, Vertex[] vertices, Edge[] edges)
+        {
+            Assert.AreEqual(tst.ResultVertices.Length, vertices.Length);
+            Assert.AreEqual(tst.ResultEdges.Length, edges.Length);
+            for (int vidx = 0; vidx < tst.ResultVertices.Length; vidx++ )
+            {
+                Assert.AreEqual(tst.ResultVertices[vidx].Pos, vertices[vidx].Pos);
+            }
+            for (int eidx = 0; eidx < tst.ResultEdges.Length; eidx++)
+            {
+                Assert.AreEqual(tst.ResultEdges[eidx].VertIndices[0], edges[eidx].VertIndices[0]);
+                Assert.AreEqual(tst.ResultEdges[eidx].VertIndices[1], edges[eidx].VertIndices[1]);
+            }
+        }
+
+        public void RunDefaultSceneTest(CSGScene scene, string filename)
+        {
+            string fullpath = @"C:\Users\chris\mmbot\convexcad\convexcad\Scenes\" + filename;
+
+            if (File.Exists(fullpath))
+            {
+                CSGSceneTestFIle tst = CSGScene.LoadTestFile(fullpath);
+                if(scene.Root == null)
+                    scene.Run();
+                Vertex[] vertices = null;
+                Edge[] edges = null;
+                scene.Root.GetWeldedGeometry(out vertices, out edges);
+                CompareGeometry(tst, vertices, edges);
+            }
+            else
+            {
+                scene.SaveTestFile(fullpath);
+            }
+
+        }
+
+        public void RunCodeSceneTest(string filename, string classname)
+        {
+            string fullpath = @"C:\Users\chris\mmbot\convexcad\convexcad\Scenes\" + filename;
+
+            CSGScene res = (CSGScene)SceneRunner.ExecuteCode(fullpath, "convexcad", classname, "Run", false);
+            RunDefaultSceneTest(res, filename + "." + classname + ".dat");
+        }
+
         [TestMethod()]
         public void RectangleTest()
         {
-            CSGScene target = new CSGScene(); // TODO: Initialize to an appropriate value
-            double x = 0F; // TODO: Initialize to an appropriate value
-            double y = 0F; // TODO: Initialize to an appropriate value
-            Node expected = null; // TODO: Initialize to an appropriate value
-            Node actual;
-            actual = target.Rectangle(x, y);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            RunCodeSceneTest("rectangle.cs", "RectangleTestScene");
+        }
+        [TestMethod()]
+        public void RectangleTest2()
+        {
+            RunCodeSceneTest("rectangle.cs", "RectangleTestScene2");
+        }
+        [TestMethod()]
+        public void RectangleTest3()
+        {
+            RunCodeSceneTest("rectangle.cs", "RectangleTestScene3");
+        }
+        [TestMethod()]
+        public void RectangleTranslated()
+        {
+            RunCodeSceneTest("rectangle.cs", "RectangleTranslated");
+        }
+        [TestMethod()]
+        public void RectangleTranslated2()
+        {
+            RunCodeSceneTest("rectangle.cs", "RectangleTranslated2");
+        }
+        [TestMethod()]
+        public void RectangleTranslated3()
+        {
+            RunCodeSceneTest("rectangle.cs", "RectangleTranslated3");
+        }
+        [TestMethod()]
+        public void RectangleRotateX()
+        {
+            RunCodeSceneTest("rectangle.cs", "RectangleRotateX");
+        }
+        [TestMethod()]
+        public void RectangleRotateY()
+        {
+            RunCodeSceneTest("rectangle.cs", "RectangleRotateY");
+        }
+        [TestMethod()]
+        public void RectangleRotateZ()
+        {
+            RunCodeSceneTest("rectangle.cs", "RectangleRotateZ");
+        }
+        [TestMethod()]
+        public void RectangleRotateMany()
+        {
+            RunCodeSceneTest("rectangle.cs", "RectangleRotateMany");
         }
 
-        /// <summary>
-        ///A test for Difference
-        ///</summary>
         [TestMethod()]
-        public void DifferenceTest()
+        public void UnionTest_RectRectOverlapping()
         {
-            CSGScene target = new CSGScene(); // TODO: Initialize to an appropriate value
-            Node[] nodes = null; // TODO: Initialize to an appropriate value
-            Node expected = null; // TODO: Initialize to an appropriate value
-            Node actual;
-            actual = target.Difference(nodes);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
+            RunCodeSceneTest("union.cs", "UnionTest_RectRectOverlapping");
+        }
+        [TestMethod()]
+        public void UnionTest_RectRectTouching()
+        {
+            RunCodeSceneTest("union.cs", "UnionTest_RectRectTouching");
+        }
+        [TestMethod()]
+        public void UnionTest_RectRectNotOverlapping()
+        {
+            RunCodeSceneTest("union.cs", "UnionTest_RectRectNotOverlapping");
+        }
+        [TestMethod()]
+        public void UnionTest_RectRectContainedA()
+        {
+            RunCodeSceneTest("union.cs", "UnionTest_RectRectContainedA");
+        }
+       /* [TestMethod()]
+        public void UnionTest_RectRectContainedB()
+        {
+            RunCodeSceneTest("union.cs", "UnionTest_RectRectContainedB");
+        }*/
+        [TestMethod()]
+        public void UnionTest_MultiRectTranslatedOverlapping()
+        {
+            RunCodeSceneTest("union.cs", "UnionTest_MultiRectTranslatedOverlapping");
         }
 
-        /// <summary>
-        ///A test for Intersect
-        ///</summary>
-        [TestMethod()]
-        public void IntersectTest()
-        {
-            CSGScene target = new CSGScene(); // TODO: Initialize to an appropriate value
-            Node[] nodes = null; // TODO: Initialize to an appropriate value
-            Node expected = null; // TODO: Initialize to an appropriate value
-            Node actual;
-            actual = target.Intersect(nodes);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for Translate
-        ///</summary>
-        [TestMethod()]
-        public void TranslateTest()
-        {
-            CSGScene target = new CSGScene(); // TODO: Initialize to an appropriate value
-            double x = 0F; // TODO: Initialize to an appropriate value
-            double y = 0F; // TODO: Initialize to an appropriate value
-            double z = 0F; // TODO: Initialize to an appropriate value
-            Node[] nodes = null; // TODO: Initialize to an appropriate value
-            Node expected = null; // TODO: Initialize to an appropriate value
-            Node actual;
-            actual = target.Translate(x, y, z, nodes);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for Union
-        ///</summary>
-        [TestMethod()]
-        public void UnionTest()
-        {
-            CSGScene target = new CSGScene(); // TODO: Initialize to an appropriate value
-            Node[] nodes = null; // TODO: Initialize to an appropriate value
-            Node expected = null; // TODO: Initialize to an appropriate value
-            Node actual;
-            actual = target.Union(nodes);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
-
-        /// <summary>
-        ///A test for Box
-        ///</summary>
-        [TestMethod()]
-        public void BoxTest()
-        {
-            CSGScene target = new CSGScene(); // TODO: Initialize to an appropriate value
-            double x = 0F; // TODO: Initialize to an appropriate value
-            double y = 0F; // TODO: Initialize to an appropriate value
-            double z = 0F; // TODO: Initialize to an appropriate value
-            Node expected = null; // TODO: Initialize to an appropriate value
-            Node actual;
-            actual = target.Box(x, y, z);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
-        }
     }
 }

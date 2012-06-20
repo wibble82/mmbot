@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="f3009fcf-cc8b-42fe-8032-0da7e7501280" name="chris@CHRISLAPTOP 2012-06-18 22:49:15" runUser="chrislaptop\chris" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="87b3b41a-f5ee-4a39-9ba7-a2667af6a788">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment runDeploymentRoot="chris_CHRISLAPTOP 2012-06-18 22_49_15">
+      <DeploymentItem filename="C:\Users\chris\mmbot\3dtools\3DTools-1.01-bin\3DTools.dll" />
+      <DeploymentItem filename="C:\Users\chris\mmbot\convexcad\convexcad\bin\Debug\convexcad.exe" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific>
+        <UnitTestRunConfig testTypeId="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b">
+          <AssemblyResolution>
+            <TestDirectory useLoadContext="true" />
+          </AssemblyResolution>
+        </UnitTestRunConfig>
+      </TestTypeSpecific>
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-06-18T22:49:15.8987487+01:00" queuing="2012-06-18T22:49:20.1559922+01:00" start="2012-06-18T22:49:20.5840167+01:00" finish="2012-06-18T22:50:17.8462919+01:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="10" executed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="9" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="CHRISLAPTOP" outcome="Error" timestamp="2012-06-18T22:50:17.8432917+01:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="RectangleTranslated2" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="bc1f91b1-352d-acef-b639-68c3cdeafb4d">
+      <Execution id="7f6ef106-2b3f-41ca-8633-514b4ff4b8d6" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RectangleTranslated2" />
+    </UnitTest>
+    <UnitTest name="UnionTest_RectRectContainedA" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="d1d4aaff-d94e-d726-a75b-7373cc5953bc">
+      <Execution id="f62940c9-f3a1-41c7-a305-a8dec233a391" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UnionTest_RectRectContainedA" />
+    </UnitTest>
+    <UnitTest name="RectangleTranslated" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="c9b82b42-3356-cf6d-93eb-b5b5d43e4723">
+      <Execution id="76c27468-8d0c-404c-bb30-293383b8c480" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RectangleTranslated" />
+    </UnitTest>
+    <UnitTest name="RectangleTest2" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="4e932900-7c1e-7db1-e4d5-e7e2247250ce">
+      <Execution id="18ead270-be27-4341-ada2-65315d58403a" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RectangleTest2" />
+    </UnitTest>
+    <UnitTest name="RectangleTranslated3" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="8f7c7f4a-018f-2d86-deb7-eb725a8508a3">
+      <Execution id="cf439e15-2ece-4dda-bc01-a65c59c35d29" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RectangleTranslated3" />
+    </UnitTest>
+    <UnitTest name="RectangleTest" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="fb71f77b-d140-c2ed-ce91-44bcea9f3a84">
+      <Execution id="ea6e0bb1-2775-45dd-a860-a5f102507468" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RectangleTest" />
+    </UnitTest>
+    <UnitTest name="UnionTest_RectRectNotOverlapping" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="6d38c98f-31ee-c300-807d-f3f6bcd779b4">
+      <Execution id="4183e1f4-72d0-4a4f-b26d-84c51533ff15" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UnionTest_RectRectNotOverlapping" />
+    </UnitTest>
+    <UnitTest name="RectangleTest3" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="ab49f718-abdd-4482-8af9-1999e6272b9b">
+      <Execution id="bae80cb8-63c6-42fa-bc38-e48ec3349bf2" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RectangleTest3" />
+    </UnitTest>
+    <UnitTest name="UnionTest_RectRectTouching" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="5c6dd9a9-ff18-f9c7-82e6-034450b93cdc">
+      <Execution id="77dc7daf-5a1e-459b-8e87-bfb383b40766" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UnionTest_RectRectTouching" />
+    </UnitTest>
+    <UnitTest name="UnionTest_RectRectOverlapping" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="f2826647-274f-6e71-9f88-8c2285fe2fbb">
+      <Execution id="fd4cc8f0-20f7-4063-8c12-4ddcda566468" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UnionTest_RectRectOverlapping" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="fb71f77b-d140-c2ed-ce91-44bcea9f3a84" executionId="ea6e0bb1-2775-45dd-a860-a5f102507468" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4e932900-7c1e-7db1-e4d5-e7e2247250ce" executionId="18ead270-be27-4341-ada2-65315d58403a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ab49f718-abdd-4482-8af9-1999e6272b9b" executionId="bae80cb8-63c6-42fa-bc38-e48ec3349bf2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c9b82b42-3356-cf6d-93eb-b5b5d43e4723" executionId="76c27468-8d0c-404c-bb30-293383b8c480" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bc1f91b1-352d-acef-b639-68c3cdeafb4d" executionId="7f6ef106-2b3f-41ca-8633-514b4ff4b8d6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8f7c7f4a-018f-2d86-deb7-eb725a8508a3" executionId="cf439e15-2ece-4dda-bc01-a65c59c35d29" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f2826647-274f-6e71-9f88-8c2285fe2fbb" executionId="fd4cc8f0-20f7-4063-8c12-4ddcda566468" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5c6dd9a9-ff18-f9c7-82e6-034450b93cdc" executionId="77dc7daf-5a1e-459b-8e87-bfb383b40766" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6d38c98f-31ee-c300-807d-f3f6bcd779b4" executionId="4183e1f4-72d0-4a4f-b26d-84c51533ff15" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d1d4aaff-d94e-d726-a75b-7373cc5953bc" executionId="f62940c9-f3a1-41c7-a305-a8dec233a391" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="ea6e0bb1-2775-45dd-a860-a5f102507468" testId="fb71f77b-d140-c2ed-ce91-44bcea9f3a84" testName="RectangleTest" computerName="CHRISLAPTOP" duration="00:00:57.0822649" startTime="2012-06-18T22:49:20.7630269+01:00" endTime="2012-06-18T22:50:17.8452918+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ea6e0bb1-2775-45dd-a860-a5f102507468">
+    </UnitTestResult>
+    <UnitTestResult executionId="18ead270-be27-4341-ada2-65315d58403a" testId="4e932900-7c1e-7db1-e4d5-e7e2247250ce" testName="RectangleTest2" computerName="CHRISLAPTOP" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="18ead270-be27-4341-ada2-65315d58403a">
+    </UnitTestResult>
+    <UnitTestResult executionId="bae80cb8-63c6-42fa-bc38-e48ec3349bf2" testId="ab49f718-abdd-4482-8af9-1999e6272b9b" testName="RectangleTest3" computerName="CHRISLAPTOP" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bae80cb8-63c6-42fa-bc38-e48ec3349bf2">
+    </UnitTestResult>
+    <UnitTestResult executionId="76c27468-8d0c-404c-bb30-293383b8c480" testId="c9b82b42-3356-cf6d-93eb-b5b5d43e4723" testName="RectangleTranslated" computerName="CHRISLAPTOP" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="76c27468-8d0c-404c-bb30-293383b8c480">
+    </UnitTestResult>
+    <UnitTestResult executionId="7f6ef106-2b3f-41ca-8633-514b4ff4b8d6" testId="bc1f91b1-352d-acef-b639-68c3cdeafb4d" testName="RectangleTranslated2" computerName="CHRISLAPTOP" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7f6ef106-2b3f-41ca-8633-514b4ff4b8d6">
+    </UnitTestResult>
+    <UnitTestResult executionId="cf439e15-2ece-4dda-bc01-a65c59c35d29" testId="8f7c7f4a-018f-2d86-deb7-eb725a8508a3" testName="RectangleTranslated3" computerName="CHRISLAPTOP" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cf439e15-2ece-4dda-bc01-a65c59c35d29">
+    </UnitTestResult>
+    <UnitTestResult executionId="fd4cc8f0-20f7-4063-8c12-4ddcda566468" testId="f2826647-274f-6e71-9f88-8c2285fe2fbb" testName="UnionTest_RectRectOverlapping" computerName="CHRISLAPTOP" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fd4cc8f0-20f7-4063-8c12-4ddcda566468">
+    </UnitTestResult>
+    <UnitTestResult executionId="77dc7daf-5a1e-459b-8e87-bfb383b40766" testId="5c6dd9a9-ff18-f9c7-82e6-034450b93cdc" testName="UnionTest_RectRectTouching" computerName="CHRISLAPTOP" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="77dc7daf-5a1e-459b-8e87-bfb383b40766">
+    </UnitTestResult>
+    <UnitTestResult executionId="4183e1f4-72d0-4a4f-b26d-84c51533ff15" testId="6d38c98f-31ee-c300-807d-f3f6bcd779b4" testName="UnionTest_RectRectNotOverlapping" computerName="CHRISLAPTOP" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4183e1f4-72d0-4a4f-b26d-84c51533ff15">
+    </UnitTestResult>
+    <UnitTestResult executionId="f62940c9-f3a1-41c7-a305-a8dec233a391" testId="d1d4aaff-d94e-d726-a75b-7373cc5953bc" testName="UnionTest_RectRectContainedA" computerName="CHRISLAPTOP" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f62940c9-f3a1-41c7-a305-a8dec233a391">
+    </UnitTestResult>
+  </Results>
+</TestRun>

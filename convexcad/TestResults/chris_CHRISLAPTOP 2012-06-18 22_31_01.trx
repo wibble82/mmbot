@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="3c8ff06c-0cb5-4f21-bfaf-7386b4ee152c" name="chris@CHRISLAPTOP 2012-06-18 22:31:01" runUser="chrislaptop\chris" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="87b3b41a-f5ee-4a39-9ba7-a2667af6a788">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment runDeploymentRoot="chris_CHRISLAPTOP 2012-06-18 22_31_01">
+      <DeploymentItem filename="C:\Users\chris\mmbot\3dtools\3DTools-1.01-bin\3DTools.dll" />
+      <DeploymentItem filename="C:\Users\chris\mmbot\convexcad\convexcad\bin\Debug\convexcad.exe" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific>
+        <UnitTestRunConfig testTypeId="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b">
+          <AssemblyResolution>
+            <TestDirectory useLoadContext="true" />
+          </AssemblyResolution>
+        </UnitTestRunConfig>
+      </TestTypeSpecific>
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-06-18T22:31:01.1471325+01:00" queuing="2012-06-18T22:31:01.4641506+01:00" start="2012-06-18T22:31:01.5031528+01:00" finish="2012-06-18T22:31:07.8885181+01:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="10" executed="10" passed="2" error="0" failed="8" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="RectangleTranslated" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="c9b82b42-3356-cf6d-93eb-b5b5d43e4723">
+      <Execution id="b240cc82-e44c-4822-8ff4-9a0da4960f34" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RectangleTranslated" />
+    </UnitTest>
+    <UnitTest name="RectangleTest3" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="ab49f718-abdd-4482-8af9-1999e6272b9b">
+      <Execution id="3f52dcce-0114-4045-a914-eed5d9d31775" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RectangleTest3" />
+    </UnitTest>
+    <UnitTest name="RectangleTest2" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="4e932900-7c1e-7db1-e4d5-e7e2247250ce">
+      <Execution id="9998d312-140d-46b9-9b0c-a3202f28327e" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RectangleTest2" />
+    </UnitTest>
+    <UnitTest name="UnionTest_RectRectContainedA" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="d1d4aaff-d94e-d726-a75b-7373cc5953bc">
+      <Execution id="4c7ace3c-d6c3-47bb-9aca-4ae0f9e801ce" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UnionTest_RectRectContainedA" />
+    </UnitTest>
+    <UnitTest name="RectangleTranslated3" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="8f7c7f4a-018f-2d86-deb7-eb725a8508a3">
+      <Execution id="6d20dc3f-a83c-4ab3-907a-e5343384fadc" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RectangleTranslated3" />
+    </UnitTest>
+    <UnitTest name="RectangleTest" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="fb71f77b-d140-c2ed-ce91-44bcea9f3a84">
+      <Execution id="bb941c72-6783-4d56-9305-724d4bbd7a38" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RectangleTest" />
+    </UnitTest>
+    <UnitTest name="UnionTest_RectRectNotOverlapping" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="6d38c98f-31ee-c300-807d-f3f6bcd779b4">
+      <Execution id="ca53d7dd-4255-40c3-9dc7-ea71f976fa98" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UnionTest_RectRectNotOverlapping" />
+    </UnitTest>
+    <UnitTest name="RectangleTranslated2" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="bc1f91b1-352d-acef-b639-68c3cdeafb4d">
+      <Execution id="095653f8-6c4b-4542-91cf-b52581d39863" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RectangleTranslated2" />
+    </UnitTest>
+    <UnitTest name="UnionTest_RectRectTouching" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="5c6dd9a9-ff18-f9c7-82e6-034450b93cdc">
+      <Execution id="8b2ba207-e528-4da9-b206-3c2c4a372a9c" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UnionTest_RectRectTouching" />
+    </UnitTest>
+    <UnitTest name="UnionTest_RectRectOverlapping" storage="c:\users\chris\mmbot\convexcad\tests\bin\debug\tests.dll" id="f2826647-274f-6e71-9f88-8c2285fe2fbb">
+      <Execution id="dbd03059-558e-46c9-969a-519263b45e32" />
+      <TestMethod codeBase="C:/Users/chris/mmbot/convexcad/tests/bin/Debug/tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="tests.CSGSceneTest, tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="UnionTest_RectRectOverlapping" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="4e932900-7c1e-7db1-e4d5-e7e2247250ce" executionId="9998d312-140d-46b9-9b0c-a3202f28327e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5c6dd9a9-ff18-f9c7-82e6-034450b93cdc" executionId="8b2ba207-e528-4da9-b206-3c2c4a372a9c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6d38c98f-31ee-c300-807d-f3f6bcd779b4" executionId="ca53d7dd-4255-40c3-9dc7-ea71f976fa98" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8f7c7f4a-018f-2d86-deb7-eb725a8508a3" executionId="6d20dc3f-a83c-4ab3-907a-e5343384fadc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ab49f718-abdd-4482-8af9-1999e6272b9b" executionId="3f52dcce-0114-4045-a914-eed5d9d31775" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bc1f91b1-352d-acef-b639-68c3cdeafb4d" executionId="095653f8-6c4b-4542-91cf-b52581d39863" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c9b82b42-3356-cf6d-93eb-b5b5d43e4723" executionId="b240cc82-e44c-4822-8ff4-9a0da4960f34" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d1d4aaff-d94e-d726-a75b-7373cc5953bc" executionId="4c7ace3c-d6c3-47bb-9aca-4ae0f9e801ce" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f2826647-274f-6e71-9f88-8c2285fe2fbb" executionId="dbd03059-558e-46c9-969a-519263b45e32" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fb71f77b-d140-c2ed-ce91-44bcea9f3a84" executionId="bb941c72-6783-4d56-9305-724d4bbd7a38" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="9998d312-140d-46b9-9b0c-a3202f28327e" testId="4e932900-7c1e-7db1-e4d5-e7e2247250ce" testName="RectangleTest2" computerName="CHRISLAPTOP" duration="00:00:00.8509613" startTime="2012-06-18T22:31:01.5081531+01:00" endTime="2012-06-18T22:31:02.7312231+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9998d312-140d-46b9-9b0c-a3202f28327e">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method tests.CSGSceneTest.RectangleTest2 threw exception: 
+System.Runtime.Serialization.SerializationException: Unable to find assembly 'c1mblfsf, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.</Message>
+          <StackTrace>    at System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   at System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   at System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   at System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   at convexcad.Geometry.CSGScene.LoadTestFile(String file_name) in C:\Users\chris\mmbot\convexcad\convexcad\CSGScene.cs:line 97
+   at tests.CSGSceneTest.RunDefaultSceneTest(CSGScene scene, String filename) in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 98
+   at tests.CSGSceneTest.RunCodeSceneTest(String filename, String classname) in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 119
+   at tests.CSGSceneTest.RectangleTest2() in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 130
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8b2ba207-e528-4da9-b206-3c2c4a372a9c" testId="5c6dd9a9-ff18-f9c7-82e6-034450b93cdc" testName="UnionTest_RectRectTouching" computerName="CHRISLAPTOP" duration="00:00:00.5020127" startTime="2012-06-18T22:31:02.7342232+01:00" endTime="2012-06-18T22:31:03.2502528+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8b2ba207-e528-4da9-b206-3c2c4a372a9c">
+    </UnitTestResult>
+    <UnitTestResult executionId="ca53d7dd-4255-40c3-9dc7-ea71f976fa98" testId="6d38c98f-31ee-c300-807d-f3f6bcd779b4" testName="UnionTest_RectRectNotOverlapping" computerName="CHRISLAPTOP" duration="00:00:00.6241690" startTime="2012-06-18T22:31:03.2532529+01:00" endTime="2012-06-18T22:31:03.8872892+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ca53d7dd-4255-40c3-9dc7-ea71f976fa98">
+    </UnitTestResult>
+    <UnitTestResult executionId="6d20dc3f-a83c-4ab3-907a-e5343384fadc" testId="8f7c7f4a-018f-2d86-deb7-eb725a8508a3" testName="RectangleTranslated3" computerName="CHRISLAPTOP" duration="00:00:00.6029990" startTime="2012-06-18T22:31:03.8902894+01:00" endTime="2012-06-18T22:31:04.4993242+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6d20dc3f-a83c-4ab3-907a-e5343384fadc">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method tests.CSGSceneTest.RectangleTranslated3 threw exception: 
+System.Runtime.Serialization.SerializationException: Unable to find assembly 'rbn4piby, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.</Message>
+          <StackTrace>    at System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   at System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   at System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   at System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   at convexcad.Geometry.CSGScene.LoadTestFile(String file_name) in C:\Users\chris\mmbot\convexcad\convexcad\CSGScene.cs:line 97
+   at tests.CSGSceneTest.RunDefaultSceneTest(CSGScene scene, String filename) in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 98
+   at tests.CSGSceneTest.RunCodeSceneTest(String filename, String classname) in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 119
+   at tests.CSGSceneTest.RectangleTranslated3() in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 150
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3f52dcce-0114-4045-a914-eed5d9d31775" testId="ab49f718-abdd-4482-8af9-1999e6272b9b" testName="RectangleTest3" computerName="CHRISLAPTOP" duration="00:00:00.5086048" startTime="2012-06-18T22:31:04.5043245+01:00" endTime="2012-06-18T22:31:05.0243542+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3f52dcce-0114-4045-a914-eed5d9d31775">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method tests.CSGSceneTest.RectangleTest3 threw exception: 
+System.Runtime.Serialization.SerializationException: Unable to find assembly 'u5fvrzsd, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.</Message>
+          <StackTrace>    at System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   at System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   at System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   at System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   at convexcad.Geometry.CSGScene.LoadTestFile(String file_name) in C:\Users\chris\mmbot\convexcad\convexcad\CSGScene.cs:line 97
+   at tests.CSGSceneTest.RunDefaultSceneTest(CSGScene scene, String filename) in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 98
+   at tests.CSGSceneTest.RunCodeSceneTest(String filename, String classname) in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 119
+   at tests.CSGSceneTest.RectangleTest3() in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 135
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="095653f8-6c4b-4542-91cf-b52581d39863" testId="bc1f91b1-352d-acef-b639-68c3cdeafb4d" testName="RectangleTranslated2" computerName="CHRISLAPTOP" duration="00:00:00.5090851" startTime="2012-06-18T22:31:05.0293545+01:00" endTime="2012-06-18T22:31:05.5433839+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="095653f8-6c4b-4542-91cf-b52581d39863">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method tests.CSGSceneTest.RectangleTranslated2 threw exception: 
+System.Runtime.Serialization.SerializationException: Unable to find assembly '0qrgxey3, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.</Message>
+          <StackTrace>    at System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   at System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   at System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   at System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   at convexcad.Geometry.CSGScene.LoadTestFile(String file_name) in C:\Users\chris\mmbot\convexcad\convexcad\CSGScene.cs:line 97
+   at tests.CSGSceneTest.RunDefaultSceneTest(CSGScene scene, String filename) in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 98
+   at tests.CSGSceneTest.RunCodeSceneTest(String filename, String classname) in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 119
+   at tests.CSGSceneTest.RectangleTranslated2() in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 145
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="b240cc82-e44c-4822-8ff4-9a0da4960f34" testId="c9b82b42-3356-cf6d-93eb-b5b5d43e4723" testName="RectangleTranslated" computerName="CHRISLAPTOP" duration="00:00:00.5033559" startTime="2012-06-18T22:31:05.5493843+01:00" endTime="2012-06-18T22:31:06.0634137+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b240cc82-e44c-4822-8ff4-9a0da4960f34">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method tests.CSGSceneTest.RectangleTranslated threw exception: 
+System.Runtime.Serialization.SerializationException: Unable to find assembly 'eqpz0sdi, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.</Message>
+          <StackTrace>    at System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   at System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   at System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   at System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   at convexcad.Geometry.CSGScene.LoadTestFile(String file_name) in C:\Users\chris\mmbot\convexcad\convexcad\CSGScene.cs:line 97
+   at tests.CSGSceneTest.RunDefaultSceneTest(CSGScene scene, String filename) in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 98
+   at tests.CSGSceneTest.RunCodeSceneTest(String filename, String classname) in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 119
+   at tests.CSGSceneTest.RectangleTranslated() in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 140
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4c7ace3c-d6c3-47bb-9aca-4ae0f9e801ce" testId="d1d4aaff-d94e-d726-a75b-7373cc5953bc" testName="UnionTest_RectRectContainedA" computerName="CHRISLAPTOP" duration="00:00:00.4124470" startTime="2012-06-18T22:31:06.0904152+01:00" endTime="2012-06-18T22:31:06.5174396+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4c7ace3c-d6c3-47bb-9aca-4ae0f9e801ce">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method tests.CSGSceneTest.UnionTest_RectRectContainedA threw exception: 
+System.Runtime.Serialization.SerializationException: Unable to find assembly '2nh1jfqp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.</Message>
+          <StackTrace>    at System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   at System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   at System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   at System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   at convexcad.Geometry.CSGScene.LoadTestFile(String file_name) in C:\Users\chris\mmbot\convexcad\convexcad\CSGScene.cs:line 97
+   at tests.CSGSceneTest.RunDefaultSceneTest(CSGScene scene, String filename) in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 98
+   at tests.CSGSceneTest.RunCodeSceneTest(String filename, String classname) in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 119
+   at tests.CSGSceneTest.UnionTest_RectRectContainedA() in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 171
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="dbd03059-558e-46c9-969a-519263b45e32" testId="f2826647-274f-6e71-9f88-8c2285fe2fbb" testName="UnionTest_RectRectOverlapping" computerName="CHRISLAPTOP" duration="00:00:00.5037183" startTime="2012-06-18T22:31:06.5214399+01:00" endTime="2012-06-18T22:31:07.0354693+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dbd03059-558e-46c9-969a-519263b45e32">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method tests.CSGSceneTest.UnionTest_RectRectOverlapping threw exception: 
+System.Runtime.Serialization.SerializationException: Unable to find assembly 'jmcsclwg, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.</Message>
+          <StackTrace>    at System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   at System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   at System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   at System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   at convexcad.Geometry.CSGScene.LoadTestFile(String file_name) in C:\Users\chris\mmbot\convexcad\convexcad\CSGScene.cs:line 97
+   at tests.CSGSceneTest.RunDefaultSceneTest(CSGScene scene, String filename) in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 98
+   at tests.CSGSceneTest.RunCodeSceneTest(String filename, String classname) in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 119
+   at tests.CSGSceneTest.UnionTest_RectRectOverlapping() in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 156
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="bb941c72-6783-4d56-9305-724d4bbd7a38" testId="fb71f77b-d140-c2ed-ce91-44bcea9f3a84" testName="RectangleTest" computerName="CHRISLAPTOP" duration="00:00:00.7904269" startTime="2012-06-18T22:31:07.0424697+01:00" endTime="2012-06-18T22:31:07.8485158+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bb941c72-6783-4d56-9305-724d4bbd7a38">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method tests.CSGSceneTest.RectangleTest threw exception: 
+System.Runtime.Serialization.SerializationException: Unable to find assembly 'tjbbcivv, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'.</Message>
+          <StackTrace>    at System.Runtime.Serialization.Formatters.Binary.BinaryAssemblyInfo.GetAssembly()
+   at System.Runtime.Serialization.Formatters.Binary.ObjectReader.GetType(BinaryAssemblyInfo assemblyInfo, String name)
+   at System.Runtime.Serialization.Formatters.Binary.ObjectMap..ctor(String objectName, String[] memberNames, BinaryTypeEnum[] binaryTypeEnumA, Object[] typeInformationA, Int32[] memberAssemIds, ObjectReader objectReader, Int32 objectId, BinaryAssemblyInfo assemblyInfo, SizedArray assemIdToAssemblyTable)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryObjectWithMapTyped record)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.ReadObjectWithMapTyped(BinaryHeaderEnum binaryHeaderEnum)
+   at System.Runtime.Serialization.Formatters.Binary.__BinaryParser.Run()
+   at System.Runtime.Serialization.Formatters.Binary.ObjectReader.Deserialize(HeaderHandler handler, __BinaryParser serParser, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   at convexcad.Geometry.CSGScene.LoadTestFile(String file_name) in C:\Users\chris\mmbot\convexcad\convexcad\CSGScene.cs:line 97
+   at tests.CSGSceneTest.RunDefaultSceneTest(CSGScene scene, String filename) in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 98
+   at tests.CSGSceneTest.RunCodeSceneTest(String filename, String classname) in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 119
+   at tests.CSGSceneTest.RectangleTest() in C:\Users\chris\mmbot\convexcad\tests\CSGSceneTest.cs:line 125
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

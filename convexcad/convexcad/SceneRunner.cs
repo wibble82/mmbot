@@ -10,7 +10,7 @@ namespace convexcad
 {
     public class SceneRunner
     {
-        private Assembly BuildAssembly(string code)
+        public static Assembly BuildAssembly(string code)
         {
             Microsoft.CSharp.CSharpCodeProvider provider =
                new CSharpCodeProvider();
@@ -18,7 +18,7 @@ namespace convexcad
             CompilerParameters compilerparams = new CompilerParameters();
             compilerparams.GenerateExecutable = false;
             compilerparams.GenerateInMemory = true;
-            compilerparams.IncludeDebugInformation = true;
+            //compilerparams.IncludeDebugInformation = true;
             compilerparams.ReferencedAssemblies.Add("System.dll");
             compilerparams.ReferencedAssemblies.Add("System.Core.dll");
             compilerparams.ReferencedAssemblies.Add("convexcad.exe");
@@ -32,7 +32,7 @@ namespace convexcad
                     errors.AppendFormat("Line {0},{1}\t: {2}\n",
                            error.Line, error.Column, error.ErrorText);
                 }
-                throw new Exception(errors.ToString());
+                throw new System.ApplicationException(errors.ToString());
             }
             else
             {
@@ -40,7 +40,7 @@ namespace convexcad
             }
         }
 
-        public object ExecuteCode(  string code,
+        public static object ExecuteCode(  string code,
                                     string namespacename, string classname,
                                     string functionname, bool isstatic, params object[] args)
         {

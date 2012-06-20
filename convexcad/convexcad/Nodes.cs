@@ -72,7 +72,10 @@ namespace convexcad
                             trimesh.TriangleIndices.Add(first_vert+f.VertIndices[0]);
                             trimesh.TriangleIndices.Add(first_vert + f.VertIndices[i - 1]);
                             trimesh.TriangleIndices.Add(first_vert + f.VertIndices[i]);
-                            
+                            trimesh.TriangleIndices.Add(first_vert + f.VertIndices[i]);
+                            trimesh.TriangleIndices.Add(first_vert + f.VertIndices[i - 1]);
+                            trimesh.TriangleIndices.Add(first_vert + f.VertIndices[0]);
+                             
                         }
                     }
                     first_vert += c.Vertices.Count;
@@ -200,7 +203,7 @@ namespace convexcad
                 {
                     Point3D p0 = vertices[unique_edges[i].VertIndices[0]].Pos;
                     Point3D p1 = vertices[unique_edges[i].VertIndices[1]].Pos;
-                    CSGScene.DebugLines.AddLine(p0,p0+(p1-p0)*1);
+                    //CSGScene.DebugLines.AddLine(p0,p0+(p1-p0)*1);
                 }
 
                 edges = unique_edges;
@@ -225,8 +228,6 @@ namespace convexcad
                         }
                         line.Points.Add(c.Vertices[f.VertIndices[0]].Pos);
                         line.Points.Add(c.Vertices[f.VertIndices[vcnt-1]].Pos);
-                        line.Thickness = 2;
-                        line.Color = Colors.Black;
                     }
                 }
             }
@@ -297,6 +298,32 @@ namespace convexcad
                     Convexes.AddRange(n.Convexes.Select(a=>a.Copy().ApplyTransform(m)));
                 }
                
+            }
+        }
+
+        [Serializable]
+        public class RotateNode : Node
+        {
+            Vector3D Axis;
+            double Angle;
+
+            public RotateNode(Vector3D axis, double angle, params Node[] nodes)
+            {
+                Axis = axis;
+                Angle = angle;
+
+                SetChildren(nodes);
+
+            }
+
+            public override void Create()
+            {
+                Matrix3D m = new RotateTransform3D(new AxisAngleRotation3D(Axis, Angle)).Value;
+                foreach (Node n in Children)
+                {
+                    Convexes.AddRange(n.Convexes.Select(a => a.Copy().ApplyTransform(m)));
+                }
+
             }
         }
 

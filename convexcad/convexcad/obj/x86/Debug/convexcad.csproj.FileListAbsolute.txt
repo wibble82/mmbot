@@ -28,3 +28,6 @@ C:\Users\chris\mmbot\convexcad\convexcad\obj\x86\Debug\GenerateResource.read.1.t
 C:\Users\chris\mmbot\convexcad\convexcad\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\chris\mmbot\convexcad\convexcad\obj\x86\Debug\convexcad.exe
 C:\Users\chris\mmbot\convexcad\convexcad\obj\x86\Debug\convexcad.pdb
+C:\Users\chris\mmbot\convexcad\convexcad\bin\Debug\convexcad.exe.config
+C:\Users\chris\mmbot\convexcad\convexcad\bin\Debug\ICSharpCode.AvalonEdit.dll
+C:\Users\chris\mmbot\convexcad\convexcad\bin\Debug\ICSharpCode.AvalonEdit.xml
