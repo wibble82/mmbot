@@ -2,90 +2,105 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using convexcad.Geometry;
+using convexcad.Shapes;
 
 namespace convexcad
 {
     [Serializable]
-    public class RectangleTestScene : CSGScene
+    public class RectangleTestScene : Scene
     {
-        public override Geometry.Node Create()
+        public override Node Create()
         {
             return Rectangle(1, 1);
         }
     }
 
     [Serializable]
-    public class RectangleTestScene2 : CSGScene
+    public class RectangleTestScene2 : Scene
     {
-        public override Geometry.Node Create()
+        public override Node Create()
         {
             return Rectangle(0.5, 2);
         }
     }
 
     [Serializable]
-    public class RectangleTestScene3 : CSGScene
+    public class RectangleTestScene3 : Scene
     {
-        public override Geometry.Node Create()
+        public override Node Create()
         {
             return Rectangle(2, 0.5);
         }
     }
 
     [Serializable]
-    public class RectangleTranslated : CSGScene
+    public class OverlappingRectangles : Scene
     {
-        public override Geometry.Node Create()
+        public override Node Create()
+        {
+        	return
+        	Translate(0,0,0,
+        		Rectangle(2,0.5),
+        		Translate(1,0,0,
+        			Rectangle(1,1)
+        		)
+        	);
+        }
+    }
+    
+    [Serializable]
+    public class RectangleTranslated : Scene
+    {
+        public override Node Create()
         {
             return Translate(0.3,1.7,0,Rectangle(2, 0.5));
         }
     }
     [Serializable]
-    public class RectangleTranslated2 : CSGScene
+    public class RectangleTranslated2 : Scene
     {
-        public override Geometry.Node Create()
+        public override Node Create()
         {
             return Translate(-10.323453, 92.7738209, 8124.12, Rectangle(2.712093, 5.4239482734));
         }
     }
     [Serializable]
-    public class RectangleTranslated3 : CSGScene
+    public class RectangleTranslated3 : Scene
     {
-        public override Geometry.Node Create()
+        public override Node Create()
         {
             return Translate(-10.323453, 92.7738209, -1283.24, Rectangle(2.712093, 5.4239482734));
         }
     }
     [Serializable]
-    public class RectangleRotateX : CSGScene
+    public class RectangleRotateX : Scene
     {
-        public override Geometry.Node Create()
+        public override Node Create()
         {
             return Rotate(1, 0, 0, 45, Rectangle(1,2));
         }
     }
     [Serializable]
-    public class RectangleRotateY : CSGScene
+    public class RectangleRotateY : Scene
     {
-        public override Geometry.Node Create()
+        public override Node Create()
         {
             return Rotate(0, 1, 0, 135, Rectangle(1, 2));
         }
     }
     [Serializable]
-    public class RectangleRotateZ : CSGScene
+    public class RectangleRotateZ : Scene
     {
-        public override Geometry.Node Create()
+        public override Node Create()
         {
             return Rotate(0, 0, 1, -120, Rectangle(1, 2));
         }
     }
 
     [Serializable]
-    public class RectangleRotateMany : CSGScene
+    public class RectangleRotateMany : Scene
     {
-        public override Geometry.Node Create()
+        public override Node Create()
         {
             return Union(
                     Translate(-4, -4, 0, Rectangle(1, 1)),

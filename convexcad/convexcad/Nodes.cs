@@ -395,7 +395,6 @@ namespace convexcad
                                     //if last stage, draw the convex we were splitting and then bail
                                     if (!CSGScene.NextStage("Done a split"))
                                     {
-                                        acvx.DebugDraw();
                                         return;
                                     }
                                     break;

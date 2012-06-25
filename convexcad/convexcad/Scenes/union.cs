@@ -2,66 +2,66 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using convexcad.Geometry;
+using convexcad.Shapes;
 
 namespace convexcad
 {
     [Serializable]
-    public class UnionTest_RectRectOverlapping : CSGScene
+    public class UnionTest_RectRectOverlapping : Scene
     {
-        public override Geometry.Node Create()
+        public override Node Create()
         {
             return Union(Rectangle(3,1.5),Translate(0.5,0.5,0,Rectangle(3,1)));
         }
     }
 
     [Serializable]
-    public class UnionTest_RectRotRectOverlapping : CSGScene
+    public class UnionTest_RectRotRectOverlapping : Scene
     {
-        public override Geometry.Node Create()
+        public override Node Create()
         {
-            return Union(Rectangle(1, 3), Translate(0.5, 0.5, 0, Rotate(0,0,1,20,Rectangle(3, 1))));
+            return Union(Rectangle(1, 3), Translate(0.5, 0.5, 0, Rotate(0,0,1,15,Rectangle(3, 1))));
         }
     }
 
     [Serializable]
-    public class UnionTest_RectRectTouching : CSGScene
+    public class UnionTest_RectRectTouching : Scene
     {
-        public override Geometry.Node Create()
+        public override Node Create()
         {
             return Union(Rectangle(1, 3), Translate(2, 0.5, 0, Rectangle(3, 1)));
         }
     }
 
     [Serializable]
-    public class UnionTest_RectRectNotOverlapping : CSGScene
+    public class UnionTest_RectRectNotOverlapping : Scene
     {
-        public override Geometry.Node Create()
+        public override Node Create()
         {
             return Union(Rectangle(1, 3), Translate(3, 0.5, 0, Rectangle(3, 1)));
         }
     }
 
     [Serializable]
-    public class UnionTest_RectRectContainedA : CSGScene
+    public class UnionTest_RectRectContainedA : Scene
     {
-        public override Geometry.Node Create()
+        public override Node Create()
         {
             return Union(Rectangle(3, 3), Rectangle(1, 1));
         }
     }
     [Serializable]
-    public class UnionTest_RectRectContainedB : CSGScene
+    public class UnionTest_RectRectContainedB : Scene
     {
-        public override Geometry.Node Create()
+        public override Node Create()
         {
             return Union(Rectangle(1, 1), Rectangle(3, 3));
         }
     }
     [Serializable]
-    public class UnionTest_MultiRectTranslatedOverlapping : CSGScene
+    public class UnionTest_MultiRectTranslatedOverlapping : Scene
     {
-        public override Geometry.Node Create()
+        public override Node Create()
         {
             return Union(
                             Rectangle(4, 3),

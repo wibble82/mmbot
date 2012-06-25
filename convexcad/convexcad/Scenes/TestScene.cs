@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using convexcad.Geometry;
+using convexcad.Shapes;
 
 namespace convexcad
 {
     [Serializable]
-    public class TestScene : CSGScene
+    public class TestScene : Scene
     {
         public string GetString() { return "hello"; }
 
-        public override Geometry.Node Create()
+        public override Node Create()
         {
             return Rectangle(1, 1);
  /*           Union(

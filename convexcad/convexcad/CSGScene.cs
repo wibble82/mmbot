@@ -42,30 +42,12 @@ namespace convexcad
                 }
             }
 
-            sealed class AllowAllAssemblyVersionsDeserializationBinder : System.Runtime.Serialization.SerializationBinder
+            public static bool IsCurrentStage()
             {
-                public override Type BindToType(string assemblyName, string typeName)
-                {
-                    Type typeToDeserialize = null;
-                    String currentAssembly = Assembly.GetExecutingAssembly().FullName;
-
-                    typeToDeserialize = Type.GetType(String.Format("{0}, {1}", typeName, assemblyName));
-
-                     // Get the type using the typeName and assemblyName
-                    if (typeToDeserialize == null)
-                    {
-                         typeToDeserialize = Type.GetType(String.Format("{0}, {1}", typeName, currentAssembly));
-                    }
-
-                    if (typeToDeserialize == null)
-                    {
-                        typeToDeserialize = Type.GetType(String.Format("{0}, {1}", "convexcad.Geometry.CSGScene", currentAssembly));
-                    }
-                    
-                    return typeToDeserialize;
-                }
+                return TargetStage >= 0 && TargetStage == Stages.Count - 1;
             }
 
+ 
             public static CSGScene Load(string file_name)
             {
                 CSGScene res = null;

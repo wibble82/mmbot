@@ -62,13 +62,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DeserializeBinders.cs" />
     <Compile Include="Math.cs" />
     <Compile Include="SceneRunner.cs" />
     <None Include="app.config" />
     <None Include="Scenes\TestScene.cs" />
     <None Include="Scenes\rectangle.cs" />
     <None Include="Scenes\union.cs" />
+    <None Include="Scenes\splitray.cs" />
     <Compile Include="ScreenSpaceLines3D.cs" />
+    <Compile Include="Shapes\ConvexMesh.cs" />
+    <Compile Include="Shapes\Edge.cs" />
+    <Compile Include="Shapes\Face.cs" />
+    <Compile Include="Shapes\Mesh.cs" />
+    <Compile Include="Shapes\Node.cs" />
+    <Compile Include="Shapes\Primitives.cs" />
+    <Compile Include="Shapes\Scene.cs" />
+    <Compile Include="Shapes\Shape.cs" />
+    <Compile Include="Shapes\Vertex.cs" />
     <Compile Include="View.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

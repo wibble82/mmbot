@@ -218,7 +218,7 @@ namespace convexcad
                     }
                 }
                 if ((hitedge0 < 0 && hitedge1 >= 0) || (hitedge0 >= 0 && hitedge1 < 0))
-                    throw new System.ApplicationException("Ray only intersected 1 edge of polygon - something dodgy going on");
+                    return false;
                 return hitedge0 >= 0;
             }
 
@@ -335,9 +335,28 @@ namespace convexcad
                 {
                     Point3D raystart = b.Vertices[bedge.VertIndices[0]].Pos;
                     Vector3D raydir = b.Vertices[bedge.VertIndices[1]].Pos - raystart;
+
+                    if (!CSGScene.NextStage("Test convex"))
+                        break;
+
+                    if (CSGScene.IsCurrentStage())
+                    {
+                        if (CSGScene.DebugLines != null)
+                        {
+                            overlap.DebugDraw();
+                            CSGScene.DebugLines.AddLine(raystart - raydir * 10, raystart + raydir * 10);
+                        }
+                    }
                     
                     if (overlap.RayIntersect2d(raystart, raydir, ref hp0, ref hedge0, ref ht0, ref hp1, ref hedge1, ref ht1))
                     {
+                        if (!CSGScene.NextStage("Splitting convex"))
+                            break;
+
+                        if (CSGScene.IsCurrentStage())
+                            if (CSGScene.DebugLines != null)
+                                CSGScene.DebugLines.AddLine(raystart - raydir * 10, raystart + raydir * 10);
+
                         //CSGScene.DebugLines.AddCross(hp0, 1);
                         //CSGScene.DebugLines.AddCross(hp1, 1);
                         //CSGScene.DebugLines.AddLine(hp0, hp1);
@@ -361,6 +380,16 @@ namespace convexcad
                             throw new System.ApplicationException("Double degerate or something!");
                         }
                         any_split = true;
+
+                        if (CSGScene.IsCurrentStage())
+                        {
+                            if (CSGScene.DebugLines != null)
+                            {
+                                foreach(Convex newaonly in a_only)
+                                    newaonly.DebugDraw();
+                                overlap.DebugDraw();
+                            }
+                        }
                     }
                 }
 
@@ -371,29 +400,6 @@ namespace convexcad
                 }
                 return any_split;
             }
-
-            /*public MeshGeometry3D GetGeometry()
-            {
-                MeshGeometry3D trimesh = new MeshGeometry3D();
-
-                foreach (Vertex v in Vertices)
-                {
-                    trimesh.Positions.Add(v.Pos);
-                    trimesh.Normals.Add(new Vector3D(0, 1, 0));
-                }
-                foreach (Face f in Faces)
-                {
-                    int vcnt = f.VertIndices.Length;
-                    for (int i = 2; i < vcnt; i++)
-                    {
-                        trimesh.TriangleIndices.Add(f.VertIndices[0]);
-                        trimesh.TriangleIndices.Add(f.VertIndices[i]);
-                        trimesh.TriangleIndices.Add(f.VertIndices[i - 1]);
-                    }
-                }
-
-                return trimesh;
-            }*/
         }
     }
 }

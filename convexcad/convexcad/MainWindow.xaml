@@ -39,7 +39,9 @@
                             <StackPanel Orientation="Horizontal">
                                 <Button Name="runButton" Click="runButtonClick" Height="50" Width="60">Run</Button>
                                 <Button Name="stepButton" Click="stepButtonClick" Height="50" Width="60">Step</Button>
+                                <Button Name="repeatStepButton" Click="repeatStepButtonClick" Height="50" Width="60">Repeat</Button>
                                 <Button Name="restartButton" Click="restartButtonClick" Height="50" Width="60">Restart</Button>
+                                <Button Name="runTestButton" Click="runTestButtonClick" Height="50" Width="60">Run Test</Button>
                             </StackPanel>
                         </Border>
                     </StackPanel>
@@ -65,8 +67,8 @@
                     <tools3d:TrackballDecorator>
                         <Viewport3D  Name="mainViewport" ClipToBounds="True" MouseDown="mainViewport_MouseDown">
                             <Viewport3D.Camera>
-                                <PerspectiveCamera FarPlaneDistance="100" LookDirection="-11,-10,-9" UpDirection="0,1,0"
-	                                               NearPlaneDistance="1" Position="11,10,9" FieldOfView="70" />
+                                <PerspectiveCamera FarPlaneDistance="100" LookDirection="-6,-5,-3" UpDirection="0,1,0"
+	                                               NearPlaneDistance="1" Position="6,5,3" FieldOfView="70" />
                             </Viewport3D.Camera>
                             <ModelVisual3D>
                                 <ModelVisual3D.Content>

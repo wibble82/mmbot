@@ -31,7 +31,7 @@ namespace convexcad
         List<string> RecentItems = new List<string>();
         List<string> SceneNames = new List<string>();
         string CurrentSceneName = "";
-        Geometry.CSGScene CurrentScene = null;
+        Shapes.Scene CurrentScene = null;
         FileSystemWatcher SceneFileWatcher = null;
         bool EnableFileWatcher = false;
 
@@ -56,6 +56,8 @@ namespace convexcad
                 runButtonClick(sender, e);
             else if (e.Key == Key.F9)
                 stepButtonClick(sender, e);
+            else if (e.Key == Key.F10)
+                repeatStepButtonClick(sender, e);
             else if (ctrldown && e.Key == Key.F7)
                 restartButtonClick(sender, e);
             else if (ctrldown && e.Key == Key.N)
@@ -71,6 +73,8 @@ namespace convexcad
         public MainWindow()
         {
             InitializeComponent();
+
+            //Shapes.Primitives.Rectangle(new Vector3D(1, 1, 0));
 
             EventManager.RegisterClassHandler(typeof(Window), Keyboard.KeyUpEvent, new KeyEventHandler(keyUp), true);
 
@@ -155,7 +159,7 @@ namespace convexcad
 
                 CurrentAssembly = SceneRunner.BuildAssembly(CurrentAssemblyName);
 
-                Type csgscene = typeof(Geometry.CSGScene);
+                Type csgscene = typeof(Shapes.Scene);
                 SceneNames = CurrentAssembly.GetTypes().Where(a => DerivesFrom(a, csgscene)).Select(a=>a.FullName).ToList();
                 NotifyPropertyChanged("SceneMenuItems");
 
@@ -192,67 +196,63 @@ namespace convexcad
 
         void RunScene(string scenename)
         {
+            mainViewport.Children.Clear();
+            blacklines.Points.Clear();
+            redlines.Points.Clear();
+
+            //create new buffers for lines
+            blacklines.Color = Colors.Black;
+            redlines.Color = Colors.Red;
+            redlines.Thickness = 4;
+
             try
             {
+                //print which scene is running
                 resultBox.Text = "Running scene " + scenename + "\n";
 
-                CurrentScene = (Geometry.CSGScene) CurrentAssembly.CreateInstance(scenename);
+                //create the main scene
+                Shapes.Scene.DebugLines = redlines;
+                CurrentScene = (Shapes.Scene)CurrentAssembly.CreateInstance(scenename);
                 CurrentScene.Run();
 
-                mainViewport.Children.Clear();
-                blacklines.Points.Clear();
-                redlines.Points.Clear();
-
-                //create new buffers for lines
-                blacklines.Color = Colors.Black;
-                redlines.Color = Colors.Red;
-                redlines.Thickness = 4;
-
-                //create the main scene
-                Geometry.CSGScene s = CurrentScene;
-                Geometry.CSGScene.DebugLines = redlines;
-                Geometry.CSGScene.Stages.Clear();
-                //Geometry.CSGScene.LastNode = s.Root;
-
-                MeshGeometry3D triangleMesh = Geometry.CSGScene.LastNode.GetGeometry();
-            
-                Color c = Colors.Blue;
-                c.A = 100;
-
-                Material material = new DiffuseMaterial(new SolidColorBrush(c));
-
-                GeometryModel3D triangleModel = new GeometryModel3D(triangleMesh, material);
-
-                ModelVisual3D model = new ModelVisual3D();
-                model.Content = triangleModel;
-            
-                if(ShowFaces)
-                    mainViewport.Children.Add(model);
-
-                mainViewport.Children.Add(redlines);
-                mainViewport.Children.Add(blacklines);
-
-                Geometry.Vertex[] welded_verts;
-                Geometry.Edge[] welded_edges;
-                Geometry.CSGScene.LastNode.GetWeldedGeometry(out welded_verts, out welded_edges);
-                if(ShowEdges)
+                //setup model if faces visible
+                if (ShowFaces)
                 {
-                    foreach (Geometry.Edge e in welded_edges)
-                    {
-                        Point3D p0 = welded_verts[e.VertIndices[0]].Pos;
-                        Point3D p1 = welded_verts[e.VertIndices[1]].Pos;
-                        blacklines.AddLine(p0, p1);
-                    }
+                    MeshGeometry3D triangleMesh = new MeshGeometry3D();
+                    foreach (Shapes.Shape s in Shapes.Scene.LastNode.Shapes)
+                        s.BuildMeshGeometry3D(triangleMesh);
+
+                    Color c = Colors.Blue; c.A = 100;
+                    Material material = new DiffuseMaterial(new SolidColorBrush(c));
+                    GeometryModel3D triangleModel = new GeometryModel3D(triangleMesh, material);
+                    ModelVisual3D model = new ModelVisual3D();
+                    model.Content = triangleModel;
+
+                    mainViewport.Children.Add(model);
                 }
 
-                if(ShowConvexes)
-                    Geometry.CSGScene.LastNode.GetWireFrame(redlines);
+                //setup screen space lines if edges visible
+                if (ShowEdges)
+                {
+                    foreach (Shapes.Shape s in Shapes.Scene.LastNode.Shapes)
+                        s.BuildScreenSpaceLines(blacklines);
+                    foreach (Shapes.Shape s in Shapes.Scene.LastNode.Shapes)
+                        s.BuildCrossesAtVertices(blacklines);
+                }
 
+                //success so print done
                 resultBox.Text += "Done\n";
             }
             catch (System.ApplicationException ex)
             {
+                //print exception if failed
                 resultBox.Text += ex.Message + "\n";
+            }
+            finally
+            {
+                //add the line buffers to the main viewport
+                mainViewport.Children.Add(redlines);
+                mainViewport.Children.Add(blacklines);
             }
         }
 
@@ -296,10 +296,10 @@ namespace convexcad
             dlg.Filter = "c# file (*.cs)|*.cs";
             if ((bool)dlg.ShowDialog())
             {
-                Geometry.CSGScene.TargetStage = -1;
+                Shapes.Scene.TargetStage = -1;
                 AddRecentScene(dlg.FileName);
                 LoadAssembly(dlg.FileName);
-                SceneName = SceneNames[0];
+                SceneName = SceneNames.FirstOrDefault();
             }
         }
 
@@ -307,7 +307,7 @@ namespace convexcad
         {
             recentFilesBox.IsDropDownOpen = false;
 
-            Geometry.CSGScene.TargetStage = -1;
+            Shapes.Scene.TargetStage = -1;
 
             LoadAssembly(((MenuItem)sender).Header.ToString());
 
@@ -316,7 +316,7 @@ namespace convexcad
 
         private void reloadButtonClick(object sender, RoutedEventArgs e)
         {
-            Geometry.CSGScene.TargetStage = -1;
+            Shapes.Scene.TargetStage = -1;
             ReloadAssembly();
         }
 
@@ -352,14 +352,16 @@ namespace convexcad
                 }
             }
 
-            bool fw = EnableFileWatcher;
-            EnableFileWatcher = false;
-            using (StreamWriter writer = new StreamWriter(CurrentAssemblyName))
+            if (CurrentAssemblyName != "")
             {
-                writer.Write(editorBox.Text);
+                bool fw = EnableFileWatcher;
+                EnableFileWatcher = false;
+                using (StreamWriter writer = new StreamWriter(CurrentAssemblyName))
+                {
+                    writer.Write(editorBox.Text);
+                }
+                EnableFileWatcher = fw;
             }
-            ReloadAssembly();
-            EnableFileWatcher = fw;
         }
 
         private void saveButtonClick(object sender, RoutedEventArgs e)
@@ -375,38 +377,77 @@ namespace convexcad
 
         private void runButtonClick(object sender, RoutedEventArgs e)
         {
-            Geometry.CSGScene.TargetStage = -1;
+            Shapes.Scene.TargetStage = -1;
             Save();
             ReloadAssembly();
         }
 
         private void stepButtonClick(object sender, RoutedEventArgs e)
         {
-            Geometry.CSGScene.TargetStage++;
+            Shapes.Scene.TargetStage++;
             Save();
             ReloadAssembly();
         }
 
         private void restartButtonClick(object sender, RoutedEventArgs e)
         {
-            Geometry.CSGScene.TargetStage=0;
+            Shapes.Scene.TargetStage = 0;
             Save();
             ReloadAssembly();
         }
-    }
 
-    public class MyScene : Geometry.CSGScene
-    {
-        public override Geometry.Node Create()
+        private void repeatStepButtonClick(object sender, RoutedEventArgs e)
         {
-            return 
-            Union(
-                Rectangle(4, 3),
-                Translate(2, 2, 0,Rectangle(4, 3)),
-                Translate(-1, 3, 0,Rectangle(5, 6)),
-                Translate(2, 1, 0,Rectangle(7, 1)),
-                Translate(3, 1, 0,Rectangle(1, 7))
-            );
+            Save();
+            ReloadAssembly();
+        }
+
+        private void runTestButtonClick(object sender, RoutedEventArgs e)
+        {
+            mainViewport.Children.Clear();
+            blacklines.Points.Clear();
+            redlines.Points.Clear();
+
+            //create new buffers for lines
+            blacklines.Color = Colors.Black;
+            redlines.Color = Colors.Red;
+            redlines.Thickness = 4;
+
+            resultBox.Text = "Testing...\n";
+
+            try
+            {
+                Shapes.Shape s = Shapes.Primitives.Rectangle(new Vector3D(1, 2, 0));
+                //create the main scene
+                MeshGeometry3D triangleMesh = new MeshGeometry3D();
+                s.BuildMeshGeometry3D(triangleMesh);
+
+                Color c = Colors.Blue;
+                c.A = 100;
+                Material material = new DiffuseMaterial(new SolidColorBrush(c));
+
+                GeometryModel3D triangleModel = new GeometryModel3D(triangleMesh, material);
+                ModelVisual3D model = new ModelVisual3D();
+                model.Content = triangleModel;
+
+                //if (ShowFaces)
+                    mainViewport.Children.Add(model);
+
+                //if (ShowConvexes)
+                    s.BuildScreenSpaceLines(redlines);
+
+                resultBox.Text += "Done\n";
+            }
+            catch (System.ApplicationException ex)
+            {
+                resultBox.Text += ex.Message + "\n";
+            }
+            finally
+            {
+                mainViewport.Children.Add(redlines);
+                mainViewport.Children.Add(blacklines);
+            }
+
         }
     }
 
