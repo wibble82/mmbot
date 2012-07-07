@@ -94,7 +94,11 @@ namespace convexcad.Shapes
         }
         public Node SplitByRay(double raystart_x, double raystart_y, double raystart_z, double raydir_x, double raydir_y, double raydir_z, params Node[] nodes)
         {
-            return new SplitByRayNode(new Point3D(raystart_x,raystart_y,raystart_z), new Vector3D(raydir_x,raydir_y,raydir_z), nodes);
+            return new SplitByRayNode(new Point3D(raystart_x, raystart_y, raystart_z), new Vector3D(raydir_x, raydir_y, raydir_z), Mesh.ESplitMode.KEEP_BOTH, nodes);
+        }
+        public Node SplitByRay(double raystart_x, double raystart_y, double raystart_z, double raydir_x, double raydir_y, double raydir_z, Mesh.ESplitMode sm, params Node[] nodes)
+        {
+            return new SplitByRayNode(new Point3D(raystart_x,raystart_y,raystart_z), new Vector3D(raydir_x,raydir_y,raydir_z), sm, nodes);
         }
 
 

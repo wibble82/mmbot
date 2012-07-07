@@ -11,7 +11,6 @@ namespace convexcad.Shapes
         public Mesh OwnerMesh;
         public List<Vertex> Vertices = new List<Vertex>();
         public List<Edge> Edges = new List<Edge>();
-        public int Idx = -1;
 
         public Point3D Centre { get { return MathUtils.Centre(Vertices.Select(a => a.Pos)); } }
         public Point3D Min { get { return MathUtils.Min(Vertices.Select(a => a.Pos)); } }
@@ -118,8 +117,6 @@ namespace convexcad.Shapes
 
         public Face Split(Edge edge0, Edge edge1)
         {
-            Face new_face = OwnerMesh.CreateFace();
-
             //get indices
             int idx0 = Edges.IndexOf(edge0);
             int idx1 = Edges.IndexOf(edge1);
@@ -161,6 +158,9 @@ namespace convexcad.Shapes
 
             //store new list of edges (effectively linking face->edge for all edges we keep)
             Edges = my_edges;
+
+            //creatre new face
+            Face new_face = OwnerMesh.CreateFace();
 
             //transfer all other edges from this face to new face
             foreach (Edge e in other_edges)
@@ -268,6 +268,7 @@ namespace convexcad.Shapes
             //default to just returning this as inside and outside
             inside_face = this;
             outside_face = null;
+            raydir.Normalize();
 
             if (!Scene.NextStage("SplitByRay"))
                 return;
@@ -361,17 +362,39 @@ namespace convexcad.Shapes
                         throw new System.ApplicationException("If res0 is pos0 and res1 is pos0, edge1 must not be neighbour of edge0");
                     
                     //got intersection - need to do vertex-vertex split
-                    inside_face = this;
-                    outside_face = Split(edge0, edge1);                    
+                    Face newface = Split(edge0, edge1);
+                    Vector3D new_centre_offset = Centre - raystart;
+                    double new_centre_cp = MathUtils.CrossXY(new_centre_offset, raydir);
+                    if (new_centre_cp <= 0)
+                    {
+                        inside_face = this;
+                        outside_face = newface;
+                    }
+                    else
+                    {
+                        outside_face = this;
+                        inside_face = newface;
+                    }
                 }
                 else if (res1 == MathUtils.RayLineResult.INTERSECTING_LINE)
                 {
-                    if (edge1 == NextEdge(edge0))
+                    if (edge1 == PrevEdge(edge0))
                         throw new System.ApplicationException("If res0 is pos0 and res1 is line, edge1 must not be neighbour of edge0");
 
                     //got intersection - need to do vertex-edge split
-                    inside_face = this;
-                    outside_face = Split(edge0, edge1, param1);
+                    Face newface = Split(edge0, edge1, param1);
+                    Vector3D new_centre_offset = Centre - raystart;
+                    double new_centre_cp = MathUtils.CrossXY(new_centre_offset, raydir);
+                    if (new_centre_cp <= 0)
+                    {
+                        inside_face = this;
+                        outside_face = newface;
+                    }
+                    else
+                    {
+                        outside_face = this;
+                        inside_face = newface;
+                    }
                 }
                 else if (res1 == MathUtils.RayLineResult.PARALLEL_OVERLAPPING)
                 {
@@ -399,14 +422,37 @@ namespace convexcad.Shapes
                         throw new System.ApplicationException("If res0 is line, edge1 must not be next neighbour of edge0");
 
                     //got intersection - need to do edge-vertex split
-                    inside_face = this;
-                    outside_face = Split(edge0, param0, edge1);
+                    Face newface = Split(edge0, param0, edge1);
+                    Vector3D new_centre_offset = Centre - raystart;
+                    double new_centre_cp = MathUtils.CrossXY(new_centre_offset, raydir);
+                    if (new_centre_cp <= 0)
+                    {
+                        inside_face = this;
+                        outside_face = newface;
+                    }
+                    else
+                    {
+                        outside_face = this;
+                        inside_face = newface;
+                    }
+
                 }
                 else if (res1 == MathUtils.RayLineResult.INTERSECTING_LINE)
                 {
                     //got intersection - need to do edge-edge split
-                    inside_face = this;
-                    outside_face = Split(edge0, param0, edge1, param1);                    
+                    Face newface = Split(edge0, param0, edge1, param1);
+                    Vector3D new_centre_offset = Centre - raystart;
+                    double new_centre_cp = MathUtils.CrossXY(new_centre_offset, raydir);
+                    if (new_centre_cp <= 0)
+                    {
+                        inside_face = this;
+                        outside_face = newface;
+                    }
+                    else
+                    {
+                        outside_face = this;
+                        inside_face = newface;
+                    }
                 }
                 else
                 {

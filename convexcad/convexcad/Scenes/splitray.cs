@@ -23,6 +23,38 @@ namespace convexcad
         }
     }
     [Serializable]
+    public class PartialSplitRayScene : Scene
+    {
+        public override Node Create()
+        {
+            return SplitByRay(0, 0, 0, 1, -0.9, 0, Mesh.ESplitMode.KEEP_OUTSIDE, 
+            			//Rotate(0,0,1,45,
+            				Rectangle(3,3)
+            			//)
+            		);
+        }
+    }    
+    [Serializable]
+    public class PartialSplitRaySceneAll : Scene
+    {
+        public override Node Create()
+        {
+            return Translate(0,0,0,
+	            		Translate(-2.3,-2,0,
+	            			SplitByRay(0, 0, 0, 1, 1, 0, Mesh.ESplitMode.KEEP_INSIDE, 
+	            				Rectangle(2,3)
+	            			)
+	            		),
+	            		Translate(2.3,2,0,
+	            			SplitByRay(0, 0, 0, 1, 1, 0, Mesh.ESplitMode.KEEP_OUTSIDE, 
+	            				Rectangle(2,3)
+	            			)
+	            		),
+	            		SplitByRay(0, 0, 0, 1, 1, 0, Mesh.ESplitMode.KEEP_BOTH, Rectangle(2,3))
+            		);
+        }
+    }    
+    [Serializable]
     public class ColinearSplitRayScene : Scene
     {
         public override Node Create()

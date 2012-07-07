@@ -278,12 +278,14 @@ namespace convexcad.Shapes
     {
         Point3D RayStart;
         Vector3D RayDir;
+        Mesh.ESplitMode SplitMode;
 
-        public SplitByRayNode(Point3D raystart, Vector3D raydir, params Node[] nodes)
+        public SplitByRayNode(Point3D raystart, Vector3D raydir, Mesh.ESplitMode sm, params Node[] nodes)
         {
             SetChildren(nodes);
             RayStart = raystart;
             RayDir = raydir;
+            SplitMode = sm;
         }
 
         public override void Create()
@@ -294,9 +296,11 @@ namespace convexcad.Shapes
                 return;
             }
             else if (Scene.IsCurrentStage())
+            {
                 Scene.AddDebugLine(RayStart - RayDir * 10, RayStart + RayDir * 10);
+            }
 
-            Shapes.AddRange(Children.SelectMany(a=>a.Shapes).Select(a => a.Copy().SplitFacesByRay(RayStart,RayDir))); //do full copy then split
+            Shapes.AddRange(Children.SelectMany(a=>a.Shapes).Select(a => a.Copy().Split2d(RayStart,RayDir,SplitMode))); //do full copy then split
         }
     }
 }

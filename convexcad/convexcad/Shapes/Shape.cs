@@ -12,6 +12,7 @@ namespace convexcad.Shapes
         public Mesh PolyMesh;
         public List<Mesh> Convexes = new List<Mesh>();
         public List<Vertex> Vertices = new List<Vertex>();
+        public bool Is2d;
 
         public Vertex CreateVertex()
         {
@@ -32,6 +33,7 @@ namespace convexcad.Shapes
 
         public void BuildMeshGeometry3D(MeshGeometry3D trimesh)
         {
+            Clean();
             Vector3D tinyoffset = new Vector3D(0, 0, 0);
 
             int first_vert = trimesh.Positions.Count;
@@ -62,6 +64,7 @@ namespace convexcad.Shapes
 
         public void BuildScreenSpaceLines(SafeScreenSpaceLines3D lines)
         {
+            Clean();
             foreach (Edge e in Convexes.SelectMany(a => a.Edges))
             {
                 lines.AddLine(e.Vertices[0].Pos, e.Vertices[1].Pos);
@@ -70,6 +73,7 @@ namespace convexcad.Shapes
 
         public void BuildCrossesAtVertices(SafeScreenSpaceLines3D lines)
         {
+            Clean();
             foreach (Edge e in Convexes.SelectMany(a => a.Edges))
             {
                 lines.AddCross(e.Vertices[0].Pos, 0.5);
@@ -140,10 +144,17 @@ namespace convexcad.Shapes
             return this;
         }
 
-        public Shape SplitFacesByRay(Point3D raystart, Vector3D raydir)
+        public Shape Split2d(Point3D raystart, Vector3D raydir, Mesh.ESplitMode sm)
         {
-            foreach (Mesh m in Convexes)
-                m.SplitFacesByRay(raystart, raydir);
+            Mesh[] convexes = Convexes.ToArray();
+            foreach (Mesh m in convexes)
+            {
+                Mesh newmesh = null;
+                if (sm != Mesh.ESplitMode.KEEP_BOTH)
+                    newmesh = CreateConvex();
+                m.Split2d(raystart, raydir, sm, newmesh);
+            }
+            Convexes = convexes.ToList();
             return this;
         }
 
@@ -158,7 +169,20 @@ namespace convexcad.Shapes
             return false;
         }
 
-        public void ValidateStructure()
+        public void Clean()
+        {
+            Vertices = Vertices.Where(a => a.OwnerFaces.Count > 0).ToList();
+            for(int i = 0; i < Vertices.Count; i++)
+                Vertices[i].Idx = i;
+            foreach(Mesh m in Convexes)
+            {
+                m.Edges = m.Edges.Where(a => a.OwnerFaces.Count > 0).ToList();
+                for(int i = 0; i < m.Edges.Count; i++)
+                    m.Edges[i].Idx = i;
+            }
+        }
+
+        public void CheckIntegrity()
         {
             StringBuilder builder = new StringBuilder(); 
             foreach (Vertex v in Vertices)
@@ -187,6 +211,8 @@ namespace convexcad.Shapes
                 }
             }
         }
+
+
 
     }
 }
